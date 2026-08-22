@@ -8,10 +8,14 @@ const GEMINI_MODEL = process.env.GEMINI_MODEL ?? "gemini-3.7-flash";
  * Receives only the sanitized, zero-PII research question produced by Pass A.
  */
 export async function POST(request: Request) {
-  const apiKey = process.env.GEMINI_KEY;
+  const apiKey =
+    process.env.GEMINI_KEY ??
+    process.env.GEMINI_API_KEY ??
+    process.env.GOOGLE_API_KEY ??
+    process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { error: "GEMINI_KEY not configured" },
+      { error: "Gemini API key not configured (set GEMINI_KEY)" },
       { status: 503 }
     );
   }
