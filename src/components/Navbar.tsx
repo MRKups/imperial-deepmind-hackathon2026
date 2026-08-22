@@ -9,20 +9,20 @@ export default function Navbar() {
   const navItems = [
     { label: "Dashboard", href: "/" },
     { label: "Raw Data", href: "/raw-data" },
-    { label: "Anticipatory Agent", href: "/agent" }
+    { label: "Analysis Agent", href: "/agent" }
   ];
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Minimal Brand */}
+          {/* Brand */}
           <Link href="/" className="flex items-center gap-2.5">
             <span className="w-7 h-7 rounded-lg bg-gray-900 text-white font-semibold flex items-center justify-center text-xs tracking-tighter">
               AH
             </span>
             <span className="font-semibold text-sm text-gray-900 tracking-tight">
-              Anticipate<span className="text-gray-400 font-normal">Health</span>
+              Health<span className="text-gray-400 font-normal">Assistant</span>
             </span>
           </Link>
 
