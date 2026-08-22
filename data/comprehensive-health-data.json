@@ -27,7 +27,7 @@
   "travel_data": {
     "upcoming_trips": [
       {
-        "destination": "Bogotá, Colombia",
+        "destination": "Bogot\u00e1, Colombia",
         "start_date": "2026-09-10",
         "end_date": "2026-09-24",
         "source": "gmail",
@@ -43,68 +43,654 @@
   },
   "records": [
     {
-      "date": "2026-08-15",
-      "calories_in": 2100,
-      "calories_out": 2400,
+      "date": "2026-07-22",
+      "calories_in": 2216,
+      "calories_out": 2460,
+      "nutrition": {
+        "protein_g": 184,
+        "carbs_g": 264,
+        "fat_g": 60
+      },
       "spending": {
-        "food": 45.50,
-        "coffee": 4.50,
-        "transport": 12.00
+        "food": 28.57,
+        "coffee": 5.68,
+        "transport": 12.89
       },
       "commute": {
         "home_to_gym_mins": 0,
-        "home_to_work_mins": 35,
+        "home_to_work_mins": 41,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 3.7,
+        "water_intake_liters": 4.4,
+        "alcohol_units": 0,
+        "supplements": [
+          "Fish Oil",
+          "Creatine",
+          "Ashwagandha"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 11,
+          "step_count": 5181,
+          "vo2_max": 41.4
+        },
+        "whoop": {
+          "strain_score": 4.3,
+          "recovery_score": 80,
+          "hrv_ms": 72,
+          "resting_heart_rate": 51,
+          "sleep_performance_percent": 72
+        },
+        "oura_ring": {
+          "readiness_score": 84,
+          "sleep_score": 71,
+          "total_sleep_hours": 5.8,
+          "deep_sleep_hours": 1.4,
+          "rem_sleep_hours": 1.3,
+          "temperature_deviation_c": -0.07
+        }
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "calories_in": 1977,
+      "calories_out": 2506,
+      "nutrition": {
+        "protein_g": 117,
+        "carbs_g": 301,
+        "fat_g": 51
+      },
+      "spending": {
+        "food": 33.85,
+        "coffee": 5.92,
+        "transport": 15.44
+      },
+      "commute": {
+        "home_to_gym_mins": 11,
+        "home_to_work_mins": 33,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 4.4,
+        "water_intake_liters": 3.3,
+        "alcohol_units": 0,
+        "supplements": [
+          "Ashwagandha",
+          "Magnesium"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Legs",
+        "gym_duration_mins": 80
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 10,
+          "step_count": 14133,
+          "vo2_max": 41.1
+        },
+        "whoop": {
+          "strain_score": 18.1,
+          "recovery_score": 62,
+          "hrv_ms": 71,
+          "resting_heart_rate": 63,
+          "sleep_performance_percent": 73
+        },
+        "oura_ring": {
+          "readiness_score": 60,
+          "sleep_score": 74,
+          "total_sleep_hours": 5.9,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.4,
+          "temperature_deviation_c": 0.03
+        }
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "calories_in": 2038,
+      "calories_out": 2816,
+      "nutrition": {
+        "protein_g": 168,
+        "carbs_g": 276,
+        "fat_g": 94
+      },
+      "spending": {
+        "food": 19.27,
+        "coffee": 6.53,
+        "transport": 16.84
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 46,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 4.5,
+        "water_intake_liters": 2.3,
+        "alcohol_units": 0,
+        "supplements": [
+          "Whey Protein",
+          "Creatine",
+          "Magnesium",
+          "Ashwagandha",
+          "Fish Oil"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 11,
+          "step_count": 10123,
+          "vo2_max": 41.9
+        },
+        "whoop": {
+          "strain_score": 5.7,
+          "recovery_score": 61,
+          "hrv_ms": 59,
+          "resting_heart_rate": 67,
+          "sleep_performance_percent": 74
+        },
+        "oura_ring": {
+          "readiness_score": 57,
+          "sleep_score": 79,
+          "total_sleep_hours": 6.0,
+          "deep_sleep_hours": 1.0,
+          "rem_sleep_hours": 1.3,
+          "temperature_deviation_c": -0.34
+        }
+      }
+    },
+    {
+      "date": "2026-07-25",
+      "calories_in": 2618,
+      "calories_out": 2627,
+      "nutrition": {
+        "protein_g": 146,
+        "carbs_g": 272,
+        "fat_g": 69
+      },
+      "spending": {
+        "food": 85.19,
+        "coffee": 0.06,
+        "transport": 15.42
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 0,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 8.2,
+        "water_intake_liters": 3.7,
+        "alcohol_units": 6,
+        "supplements": [
+          "Magnesium",
+          "Vitamin D",
+          "Whey Protein",
+          "Fish Oil"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 15,
+          "step_count": 10140,
+          "vo2_max": 42.5
+        },
+        "whoop": {
+          "strain_score": 5.0,
+          "recovery_score": 100,
+          "hrv_ms": 103,
+          "resting_heart_rate": 63,
+          "sleep_performance_percent": 100
+        },
+        "oura_ring": {
+          "readiness_score": 100,
+          "sleep_score": 100,
+          "total_sleep_hours": 9.3,
+          "deep_sleep_hours": 1.5,
+          "rem_sleep_hours": 2.3,
+          "temperature_deviation_c": 0.29
+        }
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "calories_in": 2673,
+      "calories_out": 2759,
+      "nutrition": {
+        "protein_g": 149,
+        "carbs_g": 290,
+        "fat_g": 58
+      },
+      "spending": {
+        "food": 96.74,
+        "coffee": 1.22,
+        "transport": 15.43
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 0,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 6.2,
+        "water_intake_liters": 3.7,
+        "alcohol_units": 7,
+        "supplements": [
+          "Vitamin D",
+          "Ashwagandha"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 11,
+          "step_count": 13590,
+          "vo2_max": 41.7
+        },
+        "whoop": {
+          "strain_score": 6.0,
+          "recovery_score": 88,
+          "hrv_ms": 90,
+          "resting_heart_rate": 61,
+          "sleep_performance_percent": 100
+        },
+        "oura_ring": {
+          "readiness_score": 92,
+          "sleep_score": 100,
+          "total_sleep_hours": 8.4,
+          "deep_sleep_hours": 1.7,
+          "rem_sleep_hours": 1.8,
+          "temperature_deviation_c": -0.08
+        }
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "calories_in": 2220,
+      "calories_out": 2702,
+      "nutrition": {
+        "protein_g": 141,
+        "carbs_g": 287,
+        "fat_g": 52
+      },
+      "spending": {
+        "food": 22.67,
+        "coffee": 4.75,
+        "transport": 11.32
+      },
+      "commute": {
+        "home_to_gym_mins": 17,
+        "home_to_work_mins": 46,
         "mode": "public_transit"
       },
       "lifestyle": {
         "screen_time_hours": 5.5,
         "water_intake_liters": 2.0,
-        "alcohol_units": 2
+        "alcohol_units": 0,
+        "supplements": [
+          "Creatine",
+          "Whey Protein",
+          "Fish Oil"
+        ]
       },
       "fitness": {
-        "gym_activity": "None",
-        "gym_duration_mins": 0
+        "gym_activity": "Pull",
+        "gym_duration_mins": 39
       },
       "wearables": {
         "apple_watch": {
-          "stand_hours": 12,
-          "step_count": 6500,
-          "vo2_max": 42.5
+          "stand_hours": 14,
+          "step_count": 7394,
+          "vo2_max": 42.8
         },
         "whoop": {
-          "strain_score": 8.4,
-          "recovery_score": 82,
-          "hrv_ms": 65,
-          "resting_heart_rate": 58
+          "strain_score": 17.5,
+          "recovery_score": 93,
+          "hrv_ms": 95,
+          "resting_heart_rate": 60,
+          "sleep_performance_percent": 87
         },
         "oura_ring": {
-          "readiness_score": 85,
-          "sleep_score": 80,
-          "total_sleep_hours": 6.5,
-          "deep_sleep_hours": 1.5,
-          "rem_sleep_hours": 1.2,
-          "temperature_deviation_c": -0.1
+          "readiness_score": 93,
+          "sleep_score": 87,
+          "total_sleep_hours": 7.0,
+          "deep_sleep_hours": 1.7,
+          "rem_sleep_hours": 1.7,
+          "temperature_deviation_c": -0.12
         }
       }
     },
     {
-      "date": "2026-08-16",
-      "calories_in": 2400,
-      "calories_out": 2800,
+      "date": "2026-07-28",
+      "calories_in": 2168,
+      "calories_out": 2419,
+      "nutrition": {
+        "protein_g": 171,
+        "carbs_g": 300,
+        "fat_g": 66
+      },
       "spending": {
-        "food": 65.00,
-        "coffee": 9.00,
-        "transport": 8.00
+        "food": 30.99,
+        "coffee": 4.81,
+        "transport": 7.28
       },
       "commute": {
-        "home_to_gym_mins": 15,
+        "home_to_gym_mins": 12,
+        "home_to_work_mins": 47,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 4.5,
+        "water_intake_liters": 3.5,
+        "alcohol_units": 0,
+        "supplements": [
+          "Magnesium",
+          "Vitamin D",
+          "Fish Oil"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Yoga",
+        "gym_duration_mins": 89
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 10,
+          "step_count": 8981,
+          "vo2_max": 41.3
+        },
+        "whoop": {
+          "strain_score": 19.5,
+          "recovery_score": 84,
+          "hrv_ms": 62,
+          "resting_heart_rate": 61,
+          "sleep_performance_percent": 86
+        },
+        "oura_ring": {
+          "readiness_score": 87,
+          "sleep_score": 89,
+          "total_sleep_hours": 6.9,
+          "deep_sleep_hours": 1.4,
+          "rem_sleep_hours": 1.5,
+          "temperature_deviation_c": -0.36
+        }
+      }
+    },
+    {
+      "date": "2026-07-29",
+      "calories_in": 2247,
+      "calories_out": 2802,
+      "nutrition": {
+        "protein_g": 119,
+        "carbs_g": 261,
+        "fat_g": 74
+      },
+      "spending": {
+        "food": 31.05,
+        "coffee": 6.61,
+        "transport": 7.16
+      },
+      "commute": {
+        "home_to_gym_mins": 11,
+        "home_to_work_mins": 38,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.3,
+        "water_intake_liters": 1.7,
+        "alcohol_units": 0,
+        "supplements": [
+          "Whey Protein",
+          "Creatine",
+          "Fish Oil",
+          "Magnesium"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Cardio",
+        "gym_duration_mins": 32
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 11,
+          "step_count": 4226,
+          "vo2_max": 43.1
+        },
+        "whoop": {
+          "strain_score": 19.1,
+          "recovery_score": 72,
+          "hrv_ms": 64,
+          "resting_heart_rate": 65,
+          "sleep_performance_percent": 78
+        },
+        "oura_ring": {
+          "readiness_score": 64,
+          "sleep_score": 74,
+          "total_sleep_hours": 6.3,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.3,
+          "temperature_deviation_c": -0.21
+        }
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "calories_in": 1913,
+      "calories_out": 2386,
+      "nutrition": {
+        "protein_g": 134,
+        "carbs_g": 341,
+        "fat_g": 54
+      },
+      "spending": {
+        "food": 31.43,
+        "coffee": 7.61,
+        "transport": 11.13
+      },
+      "commute": {
+        "home_to_gym_mins": 17,
+        "home_to_work_mins": 50,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.4,
+        "water_intake_liters": 2.1,
+        "alcohol_units": 0,
+        "supplements": [
+          "Ashwagandha",
+          "Fish Oil"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Push",
+        "gym_duration_mins": 46
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 12,
+          "step_count": 5600,
+          "vo2_max": 43.1
+        },
+        "whoop": {
+          "strain_score": 15.3,
+          "recovery_score": 67,
+          "hrv_ms": 73,
+          "resting_heart_rate": 66,
+          "sleep_performance_percent": 70
+        },
+        "oura_ring": {
+          "readiness_score": 75,
+          "sleep_score": 73,
+          "total_sleep_hours": 5.6,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.2,
+          "temperature_deviation_c": 0.16
+        }
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "calories_in": 1918,
+      "calories_out": 2772,
+      "nutrition": {
+        "protein_g": 117,
+        "carbs_g": 310,
+        "fat_g": 50
+      },
+      "spending": {
+        "food": 21.92,
+        "coffee": 6.15,
+        "transport": 8.3
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 49,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 4.8,
+        "water_intake_liters": 3.7,
+        "alcohol_units": 0,
+        "supplements": [
+          "Creatine",
+          "Magnesium",
+          "Ashwagandha",
+          "Vitamin D",
+          "Fish Oil"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 13,
+          "step_count": 4618,
+          "vo2_max": 43.2
+        },
+        "whoop": {
+          "strain_score": 5.1,
+          "recovery_score": 74,
+          "hrv_ms": 63,
+          "resting_heart_rate": 61,
+          "sleep_performance_percent": 77
+        },
+        "oura_ring": {
+          "readiness_score": 76,
+          "sleep_score": 72,
+          "total_sleep_hours": 6.2,
+          "deep_sleep_hours": 1.1,
+          "rem_sleep_hours": 1.3,
+          "temperature_deviation_c": -0.14
+        }
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "calories_in": 2988,
+      "calories_out": 2292,
+      "nutrition": {
+        "protein_g": 117,
+        "carbs_g": 208,
+        "fat_g": 68
+      },
+      "spending": {
+        "food": 80.86,
+        "coffee": 0.97,
+        "transport": 18.22
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 0,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 6.7,
+        "water_intake_liters": 2.2,
+        "alcohol_units": 7,
+        "supplements": [
+          "Vitamin D",
+          "Ashwagandha",
+          "Creatine",
+          "Magnesium",
+          "Whey Protein",
+          "Fish Oil"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 10,
+          "step_count": 4921,
+          "vo2_max": 43.1
+        },
+        "whoop": {
+          "strain_score": 4.0,
+          "recovery_score": 83,
+          "hrv_ms": 77,
+          "resting_heart_rate": 68,
+          "sleep_performance_percent": 95
+        },
+        "oura_ring": {
+          "readiness_score": 76,
+          "sleep_score": 93,
+          "total_sleep_hours": 7.6,
+          "deep_sleep_hours": 1.4,
+          "rem_sleep_hours": 1.7,
+          "temperature_deviation_c": 0.37
+        }
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "calories_in": 2978,
+      "calories_out": 2933,
+      "nutrition": {
+        "protein_g": 180,
+        "carbs_g": 206,
+        "fat_g": 82
+      },
+      "spending": {
+        "food": 114.71,
+        "coffee": 0.53,
+        "transport": 17.97
+      },
+      "commute": {
+        "home_to_gym_mins": 18,
         "home_to_work_mins": 0,
         "mode": "cycling"
       },
       "lifestyle": {
-        "screen_time_hours": 4.0,
-        "water_intake_liters": 3.0,
-        "alcohol_units": 0
+        "screen_time_hours": 5.9,
+        "water_intake_liters": 3.6,
+        "alcohol_units": 7,
+        "supplements": [
+          "Ashwagandha",
+          "Creatine"
+        ]
       },
       "fitness": {
         "gym_activity": "Cardio",
@@ -113,67 +699,1101 @@
       "wearables": {
         "apple_watch": {
           "stand_hours": 14,
-          "step_count": 12400,
+          "step_count": 4555,
+          "vo2_max": 42.3
+        },
+        "whoop": {
+          "strain_score": 17.3,
+          "recovery_score": 100,
+          "hrv_ms": 103,
+          "resting_heart_rate": 68,
+          "sleep_performance_percent": 100
+        },
+        "oura_ring": {
+          "readiness_score": 97,
+          "sleep_score": 100,
+          "total_sleep_hours": 8.3,
+          "deep_sleep_hours": 1.7,
+          "rem_sleep_hours": 1.7,
+          "temperature_deviation_c": 0.31
+        }
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "calories_in": 2020,
+      "calories_out": 2882,
+      "nutrition": {
+        "protein_g": 160,
+        "carbs_g": 319,
+        "fat_g": 95
+      },
+      "spending": {
+        "food": 18.08,
+        "coffee": 5.66,
+        "transport": 8.73
+      },
+      "commute": {
+        "home_to_gym_mins": 14,
+        "home_to_work_mins": 45,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.0,
+        "water_intake_liters": 1.5,
+        "alcohol_units": 0,
+        "supplements": [
+          "Creatine",
+          "Ashwagandha",
+          "Magnesium"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Yoga",
+        "gym_duration_mins": 30
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 14,
+          "step_count": 15373,
           "vo2_max": 42.6
         },
         "whoop": {
-          "strain_score": 14.2,
-          "recovery_score": 65,
-          "hrv_ms": 58,
-          "resting_heart_rate": 62
+          "strain_score": 13.9,
+          "recovery_score": 77,
+          "hrv_ms": 73,
+          "resting_heart_rate": 64,
+          "sleep_performance_percent": 82
         },
         "oura_ring": {
-          "readiness_score": 72,
-          "sleep_score": 75,
+          "readiness_score": 81,
+          "sleep_score": 78,
+          "total_sleep_hours": 6.6,
+          "deep_sleep_hours": 1.4,
+          "rem_sleep_hours": 1.4,
+          "temperature_deviation_c": -0.16
+        }
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "calories_in": 2047,
+      "calories_out": 2540,
+      "nutrition": {
+        "protein_g": 128,
+        "carbs_g": 307,
+        "fat_g": 80
+      },
+      "spending": {
+        "food": 19.25,
+        "coffee": 8.23,
+        "transport": 17.53
+      },
+      "commute": {
+        "home_to_gym_mins": 20,
+        "home_to_work_mins": 32,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.1,
+        "water_intake_liters": 4.3,
+        "alcohol_units": 0,
+        "supplements": [
+          "Creatine",
+          "Vitamin D"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Yoga",
+        "gym_duration_mins": 75
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 10,
+          "step_count": 7288,
+          "vo2_max": 43.4
+        },
+        "whoop": {
+          "strain_score": 19.2,
+          "recovery_score": 77,
+          "hrv_ms": 59,
+          "resting_heart_rate": 66,
+          "sleep_performance_percent": 86
+        },
+        "oura_ring": {
+          "readiness_score": 71,
+          "sleep_score": 87,
+          "total_sleep_hours": 6.9,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.7,
+          "temperature_deviation_c": -0.03
+        }
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "calories_in": 2148,
+      "calories_out": 2958,
+      "nutrition": {
+        "protein_g": 179,
+        "carbs_g": 284,
+        "fat_g": 66
+      },
+      "spending": {
+        "food": 33.9,
+        "coffee": 8.27,
+        "transport": 5.65
+      },
+      "commute": {
+        "home_to_gym_mins": 22,
+        "home_to_work_mins": 50,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.7,
+        "water_intake_liters": 1.9,
+        "alcohol_units": 0,
+        "supplements": [
+          "Whey Protein",
+          "Ashwagandha",
+          "Fish Oil",
+          "Vitamin D",
+          "Creatine"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Pull",
+        "gym_duration_mins": 66
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 10,
+          "step_count": 15000,
+          "vo2_max": 42.0
+        },
+        "whoop": {
+          "strain_score": 16.3,
+          "recovery_score": 83,
+          "hrv_ms": 68,
+          "resting_heart_rate": 53,
+          "sleep_performance_percent": 85
+        },
+        "oura_ring": {
+          "readiness_score": 80,
+          "sleep_score": 89,
+          "total_sleep_hours": 6.8,
+          "deep_sleep_hours": 1.1,
+          "rem_sleep_hours": 1.5,
+          "temperature_deviation_c": 0.04
+        }
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "calories_in": 2221,
+      "calories_out": 2527,
+      "nutrition": {
+        "protein_g": 155,
+        "carbs_g": 325,
+        "fat_g": 60
+      },
+      "spending": {
+        "food": 23.78,
+        "coffee": 7.9,
+        "transport": 13.82
+      },
+      "commute": {
+        "home_to_gym_mins": 11,
+        "home_to_work_mins": 31,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 3.6,
+        "water_intake_liters": 3.4,
+        "alcohol_units": 0,
+        "supplements": [
+          "Vitamin D",
+          "Magnesium",
+          "Whey Protein"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Legs",
+        "gym_duration_mins": 89
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 10,
+          "step_count": 8637,
+          "vo2_max": 42.2
+        },
+        "whoop": {
+          "strain_score": 18.8,
+          "recovery_score": 79,
+          "hrv_ms": 73,
+          "resting_heart_rate": 61,
+          "sleep_performance_percent": 76
+        },
+        "oura_ring": {
+          "readiness_score": 76,
+          "sleep_score": 74,
+          "total_sleep_hours": 6.2,
+          "deep_sleep_hours": 1.5,
+          "rem_sleep_hours": 1.5,
+          "temperature_deviation_c": -0.12
+        }
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "calories_in": 2340,
+      "calories_out": 2758,
+      "nutrition": {
+        "protein_g": 163,
+        "carbs_g": 210,
+        "fat_g": 51
+      },
+      "spending": {
+        "food": 24.45,
+        "coffee": 6.29,
+        "transport": 8.21
+      },
+      "commute": {
+        "home_to_gym_mins": 12,
+        "home_to_work_mins": 46,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 3.6,
+        "water_intake_liters": 4.4,
+        "alcohol_units": 0,
+        "supplements": [
+          "Vitamin D",
+          "Whey Protein",
+          "Magnesium",
+          "Creatine",
+          "Fish Oil",
+          "Ashwagandha"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Pull",
+        "gym_duration_mins": 55
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 14,
+          "step_count": 14440,
+          "vo2_max": 41.8
+        },
+        "whoop": {
+          "strain_score": 14.8,
+          "recovery_score": 70,
+          "hrv_ms": 66,
+          "resting_heart_rate": 60,
+          "sleep_performance_percent": 89
+        },
+        "oura_ring": {
+          "readiness_score": 62,
+          "sleep_score": 92,
+          "total_sleep_hours": 7.1,
+          "deep_sleep_hours": 1.5,
+          "rem_sleep_hours": 1.4,
+          "temperature_deviation_c": -0.11
+        }
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "calories_in": 2538,
+      "calories_out": 2440,
+      "nutrition": {
+        "protein_g": 155,
+        "carbs_g": 348,
+        "fat_g": 73
+      },
+      "spending": {
+        "food": 144.6,
+        "coffee": 2.38,
+        "transport": 17.63
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 0,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 7.6,
+        "water_intake_liters": 2.6,
+        "alcohol_units": 6,
+        "supplements": [
+          "Fish Oil",
+          "Magnesium",
+          "Ashwagandha"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 9,
+          "step_count": 6050,
+          "vo2_max": 42.6
+        },
+        "whoop": {
+          "strain_score": 4.7,
+          "recovery_score": 96,
+          "hrv_ms": 85,
+          "resting_heart_rate": 52,
+          "sleep_performance_percent": 100
+        },
+        "oura_ring": {
+          "readiness_score": 100,
+          "sleep_score": 100,
+          "total_sleep_hours": 8.7,
+          "deep_sleep_hours": 1.7,
+          "rem_sleep_hours": 1.8,
+          "temperature_deviation_c": -0.39
+        }
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "calories_in": 2510,
+      "calories_out": 2725,
+      "nutrition": {
+        "protein_g": 169,
+        "carbs_g": 290,
+        "fat_g": 67
+      },
+      "spending": {
+        "food": 56.72,
+        "coffee": 2.33,
+        "transport": 6.69
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 0,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 7.1,
+        "water_intake_liters": 2.0,
+        "alcohol_units": 7,
+        "supplements": [
+          "Fish Oil",
+          "Whey Protein",
+          "Ashwagandha",
+          "Vitamin D",
+          "Creatine"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 15,
+          "step_count": 5319,
+          "vo2_max": 41.0
+        },
+        "whoop": {
+          "strain_score": 5.3,
+          "recovery_score": 88,
+          "hrv_ms": 79,
+          "resting_heart_rate": 61,
+          "sleep_performance_percent": 100
+        },
+        "oura_ring": {
+          "readiness_score": 84,
+          "sleep_score": 100,
+          "total_sleep_hours": 8.8,
+          "deep_sleep_hours": 2.2,
+          "rem_sleep_hours": 1.8,
+          "temperature_deviation_c": -0.24
+        }
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "calories_in": 2232,
+      "calories_out": 2981,
+      "nutrition": {
+        "protein_g": 168,
+        "carbs_g": 287,
+        "fat_g": 83
+      },
+      "spending": {
+        "food": 27.67,
+        "coffee": 7.08,
+        "transport": 14.55
+      },
+      "commute": {
+        "home_to_gym_mins": 15,
+        "home_to_work_mins": 38,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 4.8,
+        "water_intake_liters": 1.5,
+        "alcohol_units": 0,
+        "supplements": [
+          "Whey Protein",
+          "Magnesium",
+          "Ashwagandha",
+          "Creatine"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Cardio",
+        "gym_duration_mins": 64
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 9,
+          "step_count": 12435,
+          "vo2_max": 42.8
+        },
+        "whoop": {
+          "strain_score": 19.1,
+          "recovery_score": 73,
+          "hrv_ms": 75,
+          "resting_heart_rate": 62,
+          "sleep_performance_percent": 75
+        },
+        "oura_ring": {
+          "readiness_score": 81,
+          "sleep_score": 76,
+          "total_sleep_hours": 6.1,
+          "deep_sleep_hours": 1.0,
+          "rem_sleep_hours": 1.3,
+          "temperature_deviation_c": -0.34
+        }
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "calories_in": 2149,
+      "calories_out": 2539,
+      "nutrition": {
+        "protein_g": 170,
+        "carbs_g": 326,
+        "fat_g": 55
+      },
+      "spending": {
+        "food": 16.78,
+        "coffee": 7.85,
+        "transport": 15.68
+      },
+      "commute": {
+        "home_to_gym_mins": 10,
+        "home_to_work_mins": 42,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 3.9,
+        "water_intake_liters": 1.9,
+        "alcohol_units": 0,
+        "supplements": [
+          "Fish Oil",
+          "Creatine",
+          "Vitamin D"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "HIIT",
+        "gym_duration_mins": 87
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 14,
+          "step_count": 6395,
+          "vo2_max": 42.3
+        },
+        "whoop": {
+          "strain_score": 17.9,
+          "recovery_score": 54,
+          "hrv_ms": 58,
+          "resting_heart_rate": 61,
+          "sleep_performance_percent": 69
+        },
+        "oura_ring": {
+          "readiness_score": 51,
+          "sleep_score": 74,
+          "total_sleep_hours": 5.6,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.2,
+          "temperature_deviation_c": 0.11
+        }
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "calories_in": 2242,
+      "calories_out": 2572,
+      "nutrition": {
+        "protein_g": 161,
+        "carbs_g": 332,
+        "fat_g": 94
+      },
+      "spending": {
+        "food": 29.01,
+        "coffee": 8.13,
+        "transport": 10.62
+      },
+      "commute": {
+        "home_to_gym_mins": 14,
+        "home_to_work_mins": 30,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.4,
+        "water_intake_liters": 3.0,
+        "alcohol_units": 0,
+        "supplements": [
+          "Whey Protein",
+          "Vitamin D"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Legs",
+        "gym_duration_mins": 77
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 10,
+          "step_count": 11396,
+          "vo2_max": 41.4
+        },
+        "whoop": {
+          "strain_score": 15.9,
+          "recovery_score": 94,
+          "hrv_ms": 91,
+          "resting_heart_rate": 62,
+          "sleep_performance_percent": 88
+        },
+        "oura_ring": {
+          "readiness_score": 86,
+          "sleep_score": 92,
+          "total_sleep_hours": 7.1,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.6,
+          "temperature_deviation_c": 0.03
+        }
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "calories_in": 2202,
+      "calories_out": 2513,
+      "nutrition": {
+        "protein_g": 156,
+        "carbs_g": 286,
+        "fat_g": 95
+      },
+      "spending": {
+        "food": 29.26,
+        "coffee": 5.71,
+        "transport": 8.58
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 44,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 3.6,
+        "water_intake_liters": 3.3,
+        "alcohol_units": 0,
+        "supplements": [
+          "Whey Protein",
+          "Fish Oil"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 15,
+          "step_count": 14235,
+          "vo2_max": 42.6
+        },
+        "whoop": {
+          "strain_score": 5.5,
+          "recovery_score": 61,
+          "hrv_ms": 50,
+          "resting_heart_rate": 62,
+          "sleep_performance_percent": 71
+        },
+        "oura_ring": {
+          "readiness_score": 57,
+          "sleep_score": 74,
+          "total_sleep_hours": 5.7,
+          "deep_sleep_hours": 1.1,
+          "rem_sleep_hours": 1.3,
+          "temperature_deviation_c": -0.29
+        }
+      }
+    },
+    {
+      "date": "2026-08-14",
+      "calories_in": 1908,
+      "calories_out": 2462,
+      "nutrition": {
+        "protein_g": 170,
+        "carbs_g": 317,
+        "fat_g": 92
+      },
+      "spending": {
+        "food": 25.97,
+        "coffee": 7.4,
+        "transport": 7.72
+      },
+      "commute": {
+        "home_to_gym_mins": 21,
+        "home_to_work_mins": 30,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.5,
+        "water_intake_liters": 3.9,
+        "alcohol_units": 0,
+        "supplements": [
+          "Vitamin D",
+          "Fish Oil",
+          "Creatine",
+          "Ashwagandha",
+          "Magnesium",
+          "Whey Protein"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Legs",
+        "gym_duration_mins": 38
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 13,
+          "step_count": 11724,
+          "vo2_max": 41.7
+        },
+        "whoop": {
+          "strain_score": 17.3,
+          "recovery_score": 96,
+          "hrv_ms": 95,
+          "resting_heart_rate": 62,
+          "sleep_performance_percent": 87
+        },
+        "oura_ring": {
+          "readiness_score": 95,
+          "sleep_score": 88,
           "total_sleep_hours": 7.0,
           "deep_sleep_hours": 1.3,
           "rem_sleep_hours": 1.5,
-          "temperature_deviation_c": 0.2
+          "temperature_deviation_c": -0.16
+        }
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "calories_in": 3036,
+      "calories_out": 2504,
+      "nutrition": {
+        "protein_g": 180,
+        "carbs_g": 322,
+        "fat_g": 72
+      },
+      "spending": {
+        "food": 97.42,
+        "coffee": 4.92,
+        "transport": 12.86
+      },
+      "commute": {
+        "home_to_gym_mins": 18,
+        "home_to_work_mins": 0,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 8.5,
+        "water_intake_liters": 3.5,
+        "alcohol_units": 3,
+        "supplements": [
+          "Vitamin D",
+          "Whey Protein",
+          "Fish Oil",
+          "Creatine"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Cardio",
+        "gym_duration_mins": 73
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 14,
+          "step_count": 6597,
+          "vo2_max": 41.2
+        },
+        "whoop": {
+          "strain_score": 17.4,
+          "recovery_score": 82,
+          "hrv_ms": 71,
+          "resting_heart_rate": 50,
+          "sleep_performance_percent": 100
+        },
+        "oura_ring": {
+          "readiness_score": 84,
+          "sleep_score": 100,
+          "total_sleep_hours": 8.7,
+          "deep_sleep_hours": 1.5,
+          "rem_sleep_hours": 2.0,
+          "temperature_deviation_c": -0.33
+        }
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "calories_in": 3054,
+      "calories_out": 2948,
+      "nutrition": {
+        "protein_g": 128,
+        "carbs_g": 262,
+        "fat_g": 62
+      },
+      "spending": {
+        "food": 129.2,
+        "coffee": 2.27,
+        "transport": 15.54
+      },
+      "commute": {
+        "home_to_gym_mins": 24,
+        "home_to_work_mins": 0,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 7.1,
+        "water_intake_liters": 2.4,
+        "alcohol_units": 4,
+        "supplements": [
+          "Ashwagandha",
+          "Creatine"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Cardio",
+        "gym_duration_mins": 49
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 11,
+          "step_count": 9825,
+          "vo2_max": 42.0
+        },
+        "whoop": {
+          "strain_score": 12.5,
+          "recovery_score": 100,
+          "hrv_ms": 84,
+          "resting_heart_rate": 54,
+          "sleep_performance_percent": 100
+        },
+        "oura_ring": {
+          "readiness_score": 99,
+          "sleep_score": 100,
+          "total_sleep_hours": 8.7,
+          "deep_sleep_hours": 1.3,
+          "rem_sleep_hours": 1.8,
+          "temperature_deviation_c": -0.11
         }
       }
     },
     {
       "date": "2026-08-17",
-      "calories_in": 1900,
-      "calories_out": 2200,
+      "calories_in": 2498,
+      "calories_out": 2764,
+      "nutrition": {
+        "protein_g": 145,
+        "carbs_g": 223,
+        "fat_g": 79
+      },
       "spending": {
-        "food": 25.00,
-        "coffee": 0.00,
-        "transport": 12.00
+        "food": 24.4,
+        "coffee": 8.83,
+        "transport": 18.64
       },
       "commute": {
         "home_to_gym_mins": 0,
-        "home_to_work_mins": 35,
+        "home_to_work_mins": 34,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.6,
+        "water_intake_liters": 3.1,
+        "alcohol_units": 0,
+        "supplements": [
+          "Magnesium",
+          "Ashwagandha",
+          "Creatine"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 11,
+          "step_count": 4816,
+          "vo2_max": 43.1
+        },
+        "whoop": {
+          "strain_score": 5.3,
+          "recovery_score": 78,
+          "hrv_ms": 54,
+          "resting_heart_rate": 52,
+          "sleep_performance_percent": 87
+        },
+        "oura_ring": {
+          "readiness_score": 83,
+          "sleep_score": 89,
+          "total_sleep_hours": 7.0,
+          "deep_sleep_hours": 1.3,
+          "rem_sleep_hours": 1.5,
+          "temperature_deviation_c": -0.29
+        }
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "calories_in": 2394,
+      "calories_out": 2295,
+      "nutrition": {
+        "protein_g": 123,
+        "carbs_g": 310,
+        "fat_g": 89
+      },
+      "spending": {
+        "food": 30.1,
+        "coffee": 4.92,
+        "transport": 16.94
+      },
+      "commute": {
+        "home_to_gym_mins": 15,
+        "home_to_work_mins": 34,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 6.0,
+        "water_intake_liters": 1.6,
+        "alcohol_units": 0,
+        "supplements": [
+          "Creatine",
+          "Ashwagandha",
+          "Magnesium"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Push",
+        "gym_duration_mins": 57
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 13,
+          "step_count": 7969,
+          "vo2_max": 42.7
+        },
+        "whoop": {
+          "strain_score": 17.0,
+          "recovery_score": 72,
+          "hrv_ms": 71,
+          "resting_heart_rate": 51,
+          "sleep_performance_percent": 83
+        },
+        "oura_ring": {
+          "readiness_score": 66,
+          "sleep_score": 85,
+          "total_sleep_hours": 6.7,
+          "deep_sleep_hours": 1.5,
+          "rem_sleep_hours": 1.5,
+          "temperature_deviation_c": 0.02
+        }
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "calories_in": 1985,
+      "calories_out": 2463,
+      "nutrition": {
+        "protein_g": 131,
+        "carbs_g": 231,
+        "fat_g": 95
+      },
+      "spending": {
+        "food": 30.85,
+        "coffee": 7.24,
+        "transport": 6.62
+      },
+      "commute": {
+        "home_to_gym_mins": 10,
+        "home_to_work_mins": 44,
         "mode": "public_transit"
       },
       "lifestyle": {
-        "screen_time_hours": 6.5,
-        "water_intake_liters": 2.5,
-        "alcohol_units": 0
+        "screen_time_hours": 5.2,
+        "water_intake_liters": 2.7,
+        "alcohol_units": 0,
+        "supplements": [
+          "Whey Protein",
+          "Fish Oil",
+          "Vitamin D",
+          "Creatine",
+          "Magnesium",
+          "Ashwagandha"
+        ]
       },
       "fitness": {
-        "gym_activity": "None",
+        "gym_activity": "Push",
+        "gym_duration_mins": 61
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 15,
+          "step_count": 9668,
+          "vo2_max": 43.1
+        },
+        "whoop": {
+          "strain_score": 15.2,
+          "recovery_score": 83,
+          "hrv_ms": 71,
+          "resting_heart_rate": 56,
+          "sleep_performance_percent": 83
+        },
+        "oura_ring": {
+          "readiness_score": 90,
+          "sleep_score": 84,
+          "total_sleep_hours": 6.7,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.4,
+          "temperature_deviation_c": 0.22
+        }
+      }
+    },
+    {
+      "date": "2026-08-20",
+      "calories_in": 2497,
+      "calories_out": 2783,
+      "nutrition": {
+        "protein_g": 141,
+        "carbs_g": 277,
+        "fat_g": 91
+      },
+      "spending": {
+        "food": 29.12,
+        "coffee": 4.51,
+        "transport": 7.83
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 36,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.5,
+        "water_intake_liters": 3.2,
+        "alcohol_units": 0,
+        "supplements": [
+          "Magnesium",
+          "Whey Protein",
+          "Creatine"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "Rest",
         "gym_duration_mins": 0
       },
       "wearables": {
         "apple_watch": {
           "stand_hours": 8,
-          "step_count": 5200,
-          "vo2_max": 42.5
+          "step_count": 5245,
+          "vo2_max": 41.6
         },
         "whoop": {
-          "strain_score": 6.1,
-          "recovery_score": 92,
-          "hrv_ms": 72,
-          "resting_heart_rate": 56
+          "strain_score": 5.9,
+          "recovery_score": 71,
+          "hrv_ms": 69,
+          "resting_heart_rate": 55,
+          "sleep_performance_percent": 83
         },
         "oura_ring": {
-          "readiness_score": 90,
-          "sleep_score": 88,
-          "total_sleep_hours": 8.5,
-          "deep_sleep_hours": 2.1,
-          "rem_sleep_hours": 2.0,
-          "temperature_deviation_c": -0.2
+          "readiness_score": 75,
+          "sleep_score": 82,
+          "total_sleep_hours": 6.7,
+          "deep_sleep_hours": 1.5,
+          "rem_sleep_hours": 1.5,
+          "temperature_deviation_c": -0.22
+        }
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "calories_in": 1913,
+      "calories_out": 2932,
+      "nutrition": {
+        "protein_g": 165,
+        "carbs_g": 309,
+        "fat_g": 88
+      },
+      "spending": {
+        "food": 19.0,
+        "coffee": 5.14,
+        "transport": 19.5
+      },
+      "commute": {
+        "home_to_gym_mins": 23,
+        "home_to_work_mins": 50,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.6,
+        "water_intake_liters": 2.4,
+        "alcohol_units": 0,
+        "supplements": [
+          "Creatine",
+          "Ashwagandha",
+          "Magnesium",
+          "Fish Oil",
+          "Vitamin D",
+          "Whey Protein"
+        ]
+      },
+      "fitness": {
+        "gym_activity": "HIIT",
+        "gym_duration_mins": 36
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 13,
+          "step_count": 6716,
+          "vo2_max": 41.7
+        },
+        "whoop": {
+          "strain_score": 19.3,
+          "recovery_score": 63,
+          "hrv_ms": 69,
+          "resting_heart_rate": 60,
+          "sleep_performance_percent": 71
+        },
+        "oura_ring": {
+          "readiness_score": 59,
+          "sleep_score": 70,
+          "total_sleep_hours": 5.8,
+          "deep_sleep_hours": 1.2,
+          "rem_sleep_hours": 1.4,
+          "temperature_deviation_c": 0.36
         }
       }
     }
