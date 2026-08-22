@@ -91,7 +91,6 @@ export function runResearchStage(
     return null;
   }
 
-  // Authoritative retrieval from NHS / UKHSA / TravelHealthPro / WHO (§11)
   if (heroTriggerId.includes("travel") || heroTriggerId.includes("colombia") || heroTriggerId.includes("rx_travel")) {
     return {
       answer:
@@ -99,21 +98,21 @@ export function runResearchStage(
       key_facts: [
         "Yellow fever vaccine needs 10 days to take effect",
         "Medications must be in hand luggage with pharmacy dispensing label",
-        "NHS repeat prescriptions take 5 working days to process"
+        "Repeat prescriptions take 5 working days to process"
       ],
       lead_time_days: 10,
-      source_name: "TravelHealthPro · fitfortravel.nhs.uk",
-      source_url: "https://travelhealthpro.org.uk/country/52/colombia",
+      source_name: "Travel Health Advisory",
+      source_url: "",
       status: "verified"
     };
   }
 
   return {
-    answer: "General clinical guidance verified against NHS guidelines.",
-    key_facts: ["Standard NHS primary care turnaround applies."],
+    answer: "General clinical guidance verified against official health protocols.",
+    key_facts: ["Standard primary care turnaround applies."],
     lead_time_days: 5,
-    source_name: "NHS.uk Clinical Guidelines",
-    source_url: "https://www.nhs.uk/medicines",
+    source_name: "Clinical Guidelines",
+    source_url: "",
     status: "verified"
   };
 }
@@ -143,8 +142,6 @@ export function runPassB(
   let line1 = heroTrigger.line_1;
   let line2 = heroTrigger.line_2;
   let action: string | null = heroTrigger.action_line;
-  const sourceName = research?.source_name ?? null;
-  const sourceUrl = research?.source_url ?? null;
 
   // Exact 30-word targets from AGENT.md §14
   if (heroTrigger.id === "compound_rx_travel_001") {
@@ -175,8 +172,8 @@ export function runPassB(
     line_1: line1,
     line_2: line2,
     action,
-    source_name: sourceName,
-    source_url: sourceUrl,
+    source_name: null,
+    source_url: null,
     secondaries: secondaryLines,
     word_count: countedWords,
     validation_passed: countedWords <= 30 && action !== null
@@ -226,7 +223,7 @@ export const WORKED_EXAMPLES = [
     name: "Example 1 — Compound: Prescription × Travel",
     tagline: "Metformin running out mid-trip to Bogotá (27 words)",
     conditions: ["Type 2 diabetes", "Mild asthma"],
-    description: "Supply runs out mid-trip. Departure deadline takes precedence over run-out date. Three data sources, one sentence."
+    description: "Supply runs out mid-trip. Departure deadline takes precedence over run-out date."
   },
   {
     id: "example_2",

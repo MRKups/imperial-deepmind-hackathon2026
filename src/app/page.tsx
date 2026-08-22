@@ -54,12 +54,12 @@ export default function Home() {
         </div>
 
         <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
-          <span>TravelHealthPro · fitfortravel.nhs.uk</span>
+          <span>Medical Logistics & Supply Rule</span>
           <Link
             href="/agent"
-            className="text-blue-600 hover:underline font-medium"
+            className="text-gray-900 hover:underline font-medium"
           >
-            Inspect 4-stage pipeline ↗
+            Inspect 4-stage pipeline →
           </Link>
         </div>
       </div>
@@ -174,15 +174,15 @@ export default function Home() {
           <span className="font-semibold text-gray-900 block">7-Day Spending & Gym</span>
           <div className="space-y-1.5 text-gray-600">
             <div className="flex justify-between">
-              <span>Coffee shops</span>
+              <span>Coffee</span>
               <span className="font-medium text-gray-900">£{m.coffeeSpend7d.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
-              <span>Takeaways / Deliveroo</span>
+              <span>Takeaways</span>
               <span className="font-medium text-gray-900">£{m.takeawaySpend7d.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
-              <span>Active gym time</span>
+              <span>Gym duration</span>
               <span className="font-medium text-gray-900">{m.gymMins7d} mins</span>
             </div>
           </div>

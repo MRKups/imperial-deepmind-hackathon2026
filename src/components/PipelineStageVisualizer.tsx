@@ -36,7 +36,7 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
   const stages = [
     { step: 1, title: "1. Trigger Engine", subtitle: "Arithmetic" },
     { step: 2, title: "2. Pass A", subtitle: "Hero & PII Gate" },
-    { step: 3, title: "3. Research", subtitle: "Cloud Guideline" },
+    { step: 3, title: "3. Research", subtitle: "Clinical Retrieval" },
     { step: 4, title: "4. Pass B", subtitle: "Lock Screen (<30w)" }
   ];
 
@@ -76,7 +76,7 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
         </div>
       </div>
 
-      {/* Primary Hero Card: 07:00 AM Lock Screen Notification (Light Mode) */}
+      {/* Primary Hero Card: 07:00 AM Lock Screen Notification */}
       <div className="max-w-md mx-auto">
         <div className="bg-white text-gray-900 p-6 rounded-2xl shadow-xs border border-gray-200/90 space-y-3">
           <div className="flex items-center justify-between text-xs text-gray-500 border-b border-gray-100 pb-2.5">
@@ -101,19 +101,10 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
             ))}
           </div>
 
-          {stage4_passB.source_name && (
-            <div className="pt-3 border-t border-gray-100 text-xs text-gray-500 flex items-center justify-between">
-              <span className="truncate">{stage4_passB.source_name}</span>
-              <a
-                href={stage4_passB.source_url || "#"}
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:underline shrink-0 ml-2 font-medium"
-              >
-                Source ↗
-              </a>
-            </div>
-          )}
+          <div className="pt-3 border-t border-gray-100 text-xs text-gray-400 flex items-center justify-between">
+            <span>Clinical Lead-Time Protocol</span>
+            <span className="text-gray-400 font-mono">07:00 AM</span>
+          </div>
         </div>
       </div>
 
@@ -219,8 +210,7 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
                 <div className="p-3 bg-gray-50 rounded-xl space-y-2 text-gray-700 border border-gray-100">
                   <p className="font-medium text-gray-900">{stage3_research.answer}</p>
                   <p className="text-gray-500 text-[11px]">
-                    Lead time: {stage3_research.lead_time_days} days · Source:{" "}
-                    {stage3_research.source_name}
+                    Required lead time: {stage3_research.lead_time_days} days
                   </p>
                 </div>
               ) : (
