@@ -1,0 +1,181 @@
+{
+  "profile": {
+    "id": "usr_98237492",
+    "name": "Alex",
+    "age": 30,
+    "height_cm": 180,
+    "baseline_bmr": 1750,
+    "medical_history": {
+      "conditions": [
+        "Mild asthma"
+      ],
+      "allergies": [
+        "Penicillin",
+        "Peanuts"
+      ],
+      "medications": [
+        "Albuterol inhaler (as needed)"
+      ],
+      "vaccinations": [
+        "COVID-19",
+        "Flu (2025)",
+        "Hepatitis A",
+        "Typhoid (2022)"
+      ]
+    }
+  },
+  "travel_data": {
+    "upcoming_trips": [
+      {
+        "destination": "Bogotá, Colombia",
+        "start_date": "2026-09-10",
+        "end_date": "2026-09-24",
+        "source": "gmail",
+        "flight": "AV 121",
+        "status": "confirmed",
+        "vaccination_alerts": [
+          "Yellow Fever (Recommended)",
+          "Typhoid (Booster required)",
+          "Malaria Pills (Consultation suggested)"
+        ]
+      }
+    ]
+  },
+  "records": [
+    {
+      "date": "2026-08-15",
+      "calories_in": 2100,
+      "calories_out": 2400,
+      "spending": {
+        "food": 45.50,
+        "coffee": 4.50,
+        "transport": 12.00
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 35,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 5.5,
+        "water_intake_liters": 2.0,
+        "alcohol_units": 2
+      },
+      "fitness": {
+        "gym_activity": "None",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 12,
+          "step_count": 6500,
+          "vo2_max": 42.5
+        },
+        "whoop": {
+          "strain_score": 8.4,
+          "recovery_score": 82,
+          "hrv_ms": 65,
+          "resting_heart_rate": 58
+        },
+        "oura_ring": {
+          "readiness_score": 85,
+          "sleep_score": 80,
+          "total_sleep_hours": 6.5,
+          "deep_sleep_hours": 1.5,
+          "rem_sleep_hours": 1.2,
+          "temperature_deviation_c": -0.1
+        }
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "calories_in": 2400,
+      "calories_out": 2800,
+      "spending": {
+        "food": 65.00,
+        "coffee": 9.00,
+        "transport": 8.00
+      },
+      "commute": {
+        "home_to_gym_mins": 15,
+        "home_to_work_mins": 0,
+        "mode": "cycling"
+      },
+      "lifestyle": {
+        "screen_time_hours": 4.0,
+        "water_intake_liters": 3.0,
+        "alcohol_units": 0
+      },
+      "fitness": {
+        "gym_activity": "Cardio",
+        "gym_duration_mins": 45
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 14,
+          "step_count": 12400,
+          "vo2_max": 42.6
+        },
+        "whoop": {
+          "strain_score": 14.2,
+          "recovery_score": 65,
+          "hrv_ms": 58,
+          "resting_heart_rate": 62
+        },
+        "oura_ring": {
+          "readiness_score": 72,
+          "sleep_score": 75,
+          "total_sleep_hours": 7.0,
+          "deep_sleep_hours": 1.3,
+          "rem_sleep_hours": 1.5,
+          "temperature_deviation_c": 0.2
+        }
+      }
+    },
+    {
+      "date": "2026-08-17",
+      "calories_in": 1900,
+      "calories_out": 2200,
+      "spending": {
+        "food": 25.00,
+        "coffee": 0.00,
+        "transport": 12.00
+      },
+      "commute": {
+        "home_to_gym_mins": 0,
+        "home_to_work_mins": 35,
+        "mode": "public_transit"
+      },
+      "lifestyle": {
+        "screen_time_hours": 6.5,
+        "water_intake_liters": 2.5,
+        "alcohol_units": 0
+      },
+      "fitness": {
+        "gym_activity": "None",
+        "gym_duration_mins": 0
+      },
+      "wearables": {
+        "apple_watch": {
+          "stand_hours": 8,
+          "step_count": 5200,
+          "vo2_max": 42.5
+        },
+        "whoop": {
+          "strain_score": 6.1,
+          "recovery_score": 92,
+          "hrv_ms": 72,
+          "resting_heart_rate": 56
+        },
+        "oura_ring": {
+          "readiness_score": 90,
+          "sleep_score": 88,
+          "total_sleep_hours": 8.5,
+          "deep_sleep_hours": 2.1,
+          "rem_sleep_hours": 2.0,
+          "temperature_deviation_c": -0.2
+        }
+      }
+    }
+  ]
+}
