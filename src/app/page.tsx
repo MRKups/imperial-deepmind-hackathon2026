@@ -8,8 +8,8 @@ export default function Home() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-8">
-      {/* Calm Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 border-b border-gray-100 pb-5">
+      {/* Calm Light Header */}
+      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 border-b border-gray-200/80 pb-5">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-gray-900">
             Good morning, {dataset.profile.name}
@@ -21,43 +21,43 @@ export default function Home() {
         <div className="flex items-center gap-3 text-xs">
           <Link
             href="/raw-data"
-            className="text-gray-500 hover:text-gray-900 transition-colors"
+            className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
           >
             Raw Data View →
           </Link>
           <Link
             href="/agent"
-            className="px-3 py-1.5 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-medium transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-gray-900 hover:bg-gray-800 text-white font-medium transition-colors shadow-xs"
           >
             Agent Engine →
           </Link>
         </div>
       </div>
 
-      {/* Hero Morning Action Brief (AGENT.md Lock Screen Preview) */}
-      <div className="p-6 rounded-2xl bg-gray-900 text-white shadow-xs">
-        <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
-          <span className="font-medium flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+      {/* Hero Morning Action Brief (Clean Light Card) */}
+      <div className="p-6 rounded-2xl bg-white border border-gray-200/90 shadow-xs">
+        <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+          <span className="font-medium flex items-center gap-1.5 text-gray-700">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
             07:00 AM Anticipatory Brief
           </span>
           <span className="text-gray-400 font-mono text-[11px]">27 words</span>
         </div>
 
-        <div className="space-y-1.5 text-sm sm:text-base leading-relaxed text-gray-100">
-          <p>10 days of metformin left. Bogotá trip is 14 days.</p>
-          <p className="text-gray-300">NHS repeats take 5 working days.</p>
-          <p className="font-semibold text-emerald-400">
+        <div className="space-y-1.5 text-sm sm:text-base leading-relaxed text-gray-900">
+          <p className="font-medium">10 days of metformin left. Bogotá trip is 14 days.</p>
+          <p className="text-gray-600">NHS repeats take 5 working days.</p>
+          <p className="font-semibold text-emerald-700">
             → Order the repeat on the NHS App today.
           </p>
-          <p className="text-xs text-gray-400 pt-1">· Yellow fever needs 10 days.</p>
+          <p className="text-xs text-gray-500 pt-1">· Yellow fever needs 10 days.</p>
         </div>
 
-        <div className="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400">
+        <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
           <span>TravelHealthPro · fitfortravel.nhs.uk</span>
           <Link
             href="/agent"
-            className="text-blue-400 hover:underline font-medium"
+            className="text-blue-600 hover:underline font-medium"
           >
             Inspect 4-stage pipeline ↗
           </Link>
@@ -123,7 +123,7 @@ export default function Home() {
       {/* Secondary Clean Summary Sections */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         {/* Sleep Quality */}
-        <div className="bg-white p-5 rounded-2xl border border-gray-100/90 shadow-xs space-y-3">
+        <div className="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-xs space-y-3">
           <span className="font-semibold text-gray-900 block">Sleep Architecture</span>
           <div className="space-y-2">
             <div className="flex justify-between text-gray-600">
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
             <div className="w-full bg-gray-100 rounded-full h-1.5">
               <div
-                className="bg-gray-500 h-1.5 rounded-full"
+                className="bg-gray-400 h-1.5 rounded-full"
                 style={{ width: `${Math.min(100, (m.remSleepHours / 2) * 100)}%` }}
               ></div>
             </div>
@@ -151,26 +151,26 @@ export default function Home() {
         </div>
 
         {/* Energy Balance */}
-        <div className="bg-white p-5 rounded-2xl border border-gray-100/90 shadow-xs space-y-3">
+        <div className="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-xs space-y-3">
           <span className="font-semibold text-gray-900 block">Daily Energy & Nutrition</span>
           <div className="flex justify-between items-baseline py-1">
             <div>
-              <span className="text-gray-400 block text-[11px]">Calories In</span>
+              <span className="text-gray-500 block text-[11px]">Calories In</span>
               <span className="text-base font-semibold text-gray-900">{m.caloriesIn}</span>
             </div>
             <div className="text-right">
-              <span className="text-gray-400 block text-[11px]">Calories Out</span>
+              <span className="text-gray-500 block text-[11px]">Calories Out</span>
               <span className="text-base font-semibold text-gray-900">{m.caloriesOut}</span>
             </div>
           </div>
-          <p className="text-gray-500 pt-1 border-t border-gray-50">
+          <p className="text-gray-600 pt-1 border-t border-gray-100">
             Water: <span className="font-medium text-gray-900">{m.waterIntakeL} L</span> · Protein:{" "}
             <span className="font-medium text-gray-900">{m.proteinG}g</span>
           </p>
         </div>
 
         {/* Weekly Behavior */}
-        <div className="bg-white p-5 rounded-2xl border border-gray-100/90 shadow-xs space-y-3">
+        <div className="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-xs space-y-3">
           <span className="font-semibold text-gray-900 block">7-Day Spending & Gym</span>
           <div className="space-y-1.5 text-gray-600">
             <div className="flex justify-between">
