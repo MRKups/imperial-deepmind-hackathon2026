@@ -1,0 +1,24 @@
+{
+  "currency": "GBP",
+  "transactions": [
+    { "date": "2026-08-01", "merchant": "Boots Pharmacy", "amount": 9.9, "category": "Health" },
+    { "date": "2026-08-02", "merchant": "Deliveroo", "amount": 24.5, "category": "Eating out" },
+    { "date": "2026-08-03", "merchant": "Pret A Manger", "amount": 7.15, "category": "Coffee & lunch" },
+    { "date": "2026-08-05", "merchant": "Avianca", "amount": 612.4, "category": "Travel" },
+    { "date": "2026-08-06", "merchant": "Tesco", "amount": 43.27, "category": "Groceries" },
+    { "date": "2026-08-08", "merchant": "Deliveroo", "amount": 31.8, "category": "Eating out" },
+    { "date": "2026-08-09", "merchant": "SoulCycle", "amount": 18.0, "category": "Fitness" },
+    { "date": "2026-08-10", "merchant": "Netflix", "amount": 10.99, "category": "Subscriptions" },
+    { "date": "2026-08-11", "merchant": "Spotify", "amount": 11.99, "category": "Subscriptions" },
+    { "date": "2026-08-12", "merchant": "Disney+", "amount": 7.99, "category": "Subscriptions" },
+    { "date": "2026-08-13", "merchant": "Deliveroo", "amount": 28.65, "category": "Eating out" },
+    { "date": "2026-08-14", "merchant": "Caffè Nero", "amount": 4.1, "category": "Coffee & lunch" },
+    { "date": "2026-08-15", "merchant": "Tesco", "amount": 51.6, "category": "Groceries" },
+    { "date": "2026-08-16", "merchant": "The Crown, Islington", "amount": 42.3, "category": "Eating out" },
+    { "date": "2026-08-17", "merchant": "TfL", "amount": 36.2, "category": "Transport" },
+    { "date": "2026-08-18", "merchant": "Deliveroo", "amount": 22.4, "category": "Eating out" },
+    { "date": "2026-08-19", "merchant": "Runners Need", "amount": 89.99, "category": "Fitness" },
+    { "date": "2026-08-20", "merchant": "Deliveroo", "amount": 26.75, "category": "Eating out" },
+    { "date": "2026-08-21", "merchant": "Pret A Manger", "amount": 8.4, "category": "Coffee & lunch" }
+  ]
+}

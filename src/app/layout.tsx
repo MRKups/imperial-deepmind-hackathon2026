@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${healthData.profile.name}'s Health Dashboard`,
-  description: "Daily health and lifestyle overview",
+  title: `${healthData.profile.name}'s Morning Brief`,
+  description:
+    "One actionable thing every morning, found across your health, calendar, email and spending data",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -29,14 +30,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <nav className="bg-white border-b border-gray-200">
           <div className="max-w-4xl mx-auto px-8 h-14 flex items-center gap-6">
             <span className="font-semibold text-gray-900">
-              {healthData.profile.name}&apos;s Health
+              {healthData.profile.name}&apos;s Morning Brief
             </span>
             <div className="flex items-center gap-4 text-sm">
               <Link
                 href="/"
                 className="text-gray-600 hover:text-gray-900 hover:underline underline-offset-4"
               >
-                Overview
+                Today
               </Link>
               <Link
                 href="/data"

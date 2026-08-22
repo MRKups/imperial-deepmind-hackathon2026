@@ -1,0 +1,16 @@
+{
+  "events": [
+    { "date": "2026-08-22", "time": "09:30", "title": "Team standup", "location": "Google Meet" },
+    { "date": "2026-08-23", "time": "08:00", "title": "Long run — half marathon training", "location": "Hyde Park" },
+    { "date": "2026-08-24", "time": "19:00", "title": "Push Day with Marcus", "location": "PureGym Angel" },
+    { "date": "2026-08-26", "time": "18:30", "title": "Dinner with Sam", "location": "Dishoom Shoreditch" },
+    { "date": "2026-08-28", "time": "14:00", "title": "Dentist check-up", "location": "Whitfield Dental" },
+    { "date": "2026-09-01", "time": "10:00", "title": "Q3 review with manager", "location": "Office, 4th floor" },
+    { "date": "2026-09-03", "time": "19:30", "title": "Leaving drinks for Priya", "location": "The Crown, Islington" },
+    { "date": "2026-09-05", "time": "11:45", "title": "Flight LHR → BOG, Avianca AV121", "location": "Heathrow T5" },
+    { "date": "2026-09-05", "end_date": "2026-09-15", "title": "Bogotá trip — visiting family", "location": "Bogotá, Colombia" },
+    { "date": "2026-09-15", "time": "20:10", "title": "Flight BOG → LHR, Avianca AV120", "location": "El Dorado Intl" },
+    { "date": "2026-09-20", "time": "09:00", "title": "Richmond Half Marathon", "location": "Richmond Park" },
+    { "date": "2026-09-28", "time": "09:00", "title": "Car MOT due", "location": "Kwik Fit, Holloway Rd" }
+  ]
+}

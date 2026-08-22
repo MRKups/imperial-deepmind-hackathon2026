@@ -1,0 +1,52 @@
+{
+  "emails": [
+    {
+      "date": "2026-08-01",
+      "from": "Boots Pharmacy",
+      "subject": "Your prescription is ready to collect",
+      "snippet": "Metformin 500mg x 60 tablets (30-day supply) dispensed against your NHS repeat prescription. Please collect within 7 days."
+    },
+    {
+      "date": "2026-08-05",
+      "from": "Avianca",
+      "subject": "Booking confirmed: London → Bogotá, 5 Sep 2026",
+      "snippet": "Confirmation AV-8Q2XKL. Outbound AV121 dep 11:45 LHR 5 Sep, return AV120 dep 20:10 BOG 15 Sep. Checked bag included."
+    },
+    {
+      "date": "2026-08-08",
+      "from": "AXA Insurance",
+      "subject": "Your annual multi-trip travel insurance has expired",
+      "snippet": "Your policy TRV-2210394 ended on 8 August 2026. Renew online to stay covered for upcoming trips."
+    },
+    {
+      "date": "2026-08-12",
+      "from": "Dr. Okafor's Surgery",
+      "subject": "Change to repeat prescription turnaround",
+      "snippet": "From September, repeat prescription requests will take up to 5 working days to process. Plan ahead before travel."
+    },
+    {
+      "date": "2026-08-15",
+      "from": "PureGym",
+      "subject": "Your membership renews 1 September — £24.99",
+      "snippet": "Your monthly membership will renew automatically. You have visited 17 times in the last month. Keep it up!"
+    },
+    {
+      "date": "2026-08-18",
+      "from": "Richmond Half Marathon",
+      "subject": "4 weeks to go — race pack and start times",
+      "snippet": "Your race pack ships 1 September. Wave B start 09:20. Remember to confirm your emergency contact details."
+    },
+    {
+      "date": "2026-08-20",
+      "from": "Monzo",
+      "subject": "Your August spending summary so far",
+      "snippet": "You have spent £1,284 so far this month. Eating out is 38% above your monthly average."
+    },
+    {
+      "date": "2026-08-21",
+      "from": "TravelHealthPro",
+      "subject": "Travel health advice for Colombia",
+      "snippet": "Bogotá sits at 2,640m altitude. Yellow fever vaccination recommended for some regions of Colombia; check requirements at least 10 days before departure."
+    }
+  ]
+}
