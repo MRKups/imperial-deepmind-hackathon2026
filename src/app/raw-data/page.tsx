@@ -5,19 +5,19 @@ export default function RawDataPage() {
   const dataset = getHealthDataset();
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
-      {/* Minimal Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 border-b border-gray-100 pb-5">
+    <div className="space-y-6 sm:space-y-8">
+      {/* Clear Header */}
+      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3 border-b border-gray-200 pb-5">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-gray-900">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-950">
             Raw Data View
           </h1>
-          <p className="text-xs text-gray-500 mt-0.5">
-            Tabular stream across wearables, spending, and lifestyle · Zero algorithmic bias
+          <p className="text-sm sm:text-base text-gray-600 mt-1">
+            Complete daily records across wearables, food, lifestyle, and fitness · Zero algorithmic bias
           </p>
         </div>
-        <span className="text-xs text-gray-400 font-mono">
-          {dataset.records.length} records
+        <span className="text-xs sm:text-sm font-semibold px-3 py-1 bg-gray-100 text-gray-800 rounded-full border border-gray-200 self-start sm:self-auto">
+          {dataset.records.length} Daily Records
         </span>
       </div>
 

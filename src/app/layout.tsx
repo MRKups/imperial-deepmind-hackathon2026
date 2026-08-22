@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AnticipateHealth — Anticipatory Health Intelligence",
-  description: "Autonomous lead-time health agent powered by AGENT.md architecture",
+  title: "HealthAssistant — Analysis Agent",
+  description: "Daily anticipatory health intelligence and action agent",
 };
 
 export default function RootLayout({
@@ -26,16 +26,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased text-[15px] sm:text-[16px]`}
     >
       <body className="min-h-full bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
         <Navbar />
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
           {children}
         </main>
-        <footer className="border-t border-gray-200 bg-white py-6 text-center text-xs text-gray-500">
+        <footer className="border-t border-gray-200 bg-white py-6 text-center text-sm text-gray-500">
           <p>
-            AnticipateHealth · Imperial DeepMind Hackathon 2026 · Built according to AGENT.md
+            HealthAssistant · Imperial DeepMind Hackathon 2026
           </p>
         </footer>
       </body>
