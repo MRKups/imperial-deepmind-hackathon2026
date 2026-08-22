@@ -1,85 +1,121 @@
 import healthData from "../../data/health-data.json";
 
-export default function Home() {
-  const records = healthData.records;
-  
-  // Calculate some initial stats over the recorded period
-  const totalDays = records.length;
-  
-  const avgSleepHours = (records.reduce((acc, curr) => acc + curr.sleep_hours, 0) / totalDays).toFixed(1);
-  const avgScreenTime = (records.reduce((acc, curr) => acc + curr.screen_time, 0) / totalDays).toFixed(1);
-  const avgStandHours = (records.reduce((acc, curr) => acc + curr.stand_hours, 0) / totalDays).toFixed(1);
-  const avgCaloriesIn = Math.round(records.reduce((acc, curr) => acc + curr.calories_in, 0) / totalDays);
-  const avgCaloriesOut = Math.round(records.reduce((acc, curr) => acc + curr.calories_out, 0) / totalDays);
-  
-  const totalGymMins = records.reduce((acc, curr) => acc + curr.gym_duration_mins, 0);
+type NumericKey =
+  | "sleep_hours"
+  | "screen_time"
+  | "calories_in"
+  | "calories_out"
+  | "stand_hours"
+  | "avg_heart_rate"
+  | "gym_duration_mins";
 
-  // Latest record
-  const latestRecord = records[records.length - 1];
+const records = healthData.records;
+
+function avg(key: NumericKey) {
+  return records.reduce((acc, r) => acc + r[key], 0) / records.length;
+}
+
+function Sparkline({ values }: { values: number[] }) {
+  const w = 140;
+  const h = 40;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const x = (i: number) => (i / (values.length - 1)) * (w - 8) + 4;
+  const y = (v: number) => h - 6 - ((v - min) / range) * (h - 12);
+  const points = values.map((v, i) => `${x(i)},${y(v)}`).join(" ");
+  const last = values[values.length - 1];
+  return (
+    <svg
+      width={w}
+      height={h}
+      viewBox={`0 0 ${w} ${h}`}
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <polyline
+        points={points}
+        fill="none"
+        stroke="#93c5fd"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx={x(values.length - 1)} cy={y(last)} r="3.5" fill="#2563eb" />
+    </svg>
+  );
+}
+
+export default function Home() {
+  const latest = records[records.length - 1];
+  const period = `${records[0].date} – ${latest.date}`;
+
+  const gymSessions = records.filter((r) => r.gym_duration_mins > 0).length;
+  const totalGymMins = records.reduce((acc, r) => acc + r.gym_duration_mins, 0);
+
+  const secondaryStats = [
+    { label: "Calories in", value: `${Math.round(avg("calories_in"))}`, sub: "avg / day" },
+    { label: "Calories out", value: `${Math.round(avg("calories_out"))}`, sub: "avg / day" },
+    { label: "Stand hours", value: avg("stand_hours").toFixed(1), sub: "avg / day" },
+    { label: "Heart rate", value: `${Math.round(avg("avg_heart_rate"))}`, sub: "avg bpm" },
+    { label: "Gym sessions", value: `${gymSessions}`, sub: `of ${records.length} days` },
+    { label: "Gym time", value: `${totalGymMins}`, sub: "total mins" },
+  ];
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 p-8 font-sans">
+    <main className="flex-1 p-8">
       <div className="max-w-4xl mx-auto space-y-8">
-        
-        <header className="flex flex-col gap-2">
-          <h1 className="text-4xl font-bold tracking-tight text-blue-900">
-            {healthData.profile.name}&apos;s Health Dashboard
-          </h1>
-          <p className="text-lg text-gray-600">Initial stats & lifestyle overview based on recent data.</p>
+        <header className="flex flex-col gap-1">
+          <h1 className="text-3xl font-bold tracking-tight">At a glance</h1>
+          <p className="text-sm text-gray-600">
+            {records.length}-day period · {period}
+          </p>
         </header>
 
-        {/* 7-Day Averages Section */}
-        <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 mb-4">7-Day Averages</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-purple-50 p-4 rounded-lg">
-              <p className="text-xs text-purple-600 font-medium uppercase tracking-wider">Sleep</p>
-              <p className="text-2xl font-bold text-purple-900">{avgSleepHours} h</p>
-            </div>
-            <div className="bg-indigo-50 p-4 rounded-lg">
-              <p className="text-xs text-indigo-600 font-medium uppercase tracking-wider">Screen Time</p>
-              <p className="text-2xl font-bold text-indigo-900">{avgScreenTime} h</p>
-            </div>
-            <div className="bg-green-50 p-4 rounded-lg">
-              <p className="text-xs text-green-600 font-medium uppercase tracking-wider">Calories In</p>
-              <p className="text-2xl font-bold text-green-900">{avgCaloriesIn}</p>
-            </div>
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="text-xs text-orange-600 font-medium uppercase tracking-wider">Calories Out</p>
-              <p className="text-2xl font-bold text-orange-900">{avgCaloriesOut}</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Activity & Wearables */}
+        {/* Lead tiles: sleep and screen time */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-3">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2">Activity Overview</h2>
-            <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
-              <span className="text-sm font-medium text-gray-600">Total Gym Time</span>
-              <span className="font-bold text-gray-900">{totalGymMins} mins</span>
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <p className="text-sm font-medium text-gray-600">Sleep</p>
+            <div className="mt-2 flex items-end justify-between gap-4">
+              <p className="text-5xl font-semibold">
+                {avg("sleep_hours").toFixed(1)}
+                <span className="text-xl font-medium text-gray-500"> h avg</span>
+              </p>
+              <Sparkline values={records.map((r) => r.sleep_hours)} />
             </div>
-            <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
-              <span className="text-sm font-medium text-gray-600">Avg Stand Hours</span>
-              <span className="font-bold text-gray-900">{avgStandHours} hrs/day</span>
-            </div>
+            <p className="mt-3 text-sm text-gray-600">
+              Last night: <span className="font-semibold text-gray-900">{latest.sleep_hours} h</span>
+            </p>
           </div>
 
-          {/* Latest Day Snapshot */}
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-3">
-            <h2 className="text-xl font-semibold text-gray-800 border-b pb-2">Latest Day ({latestRecord.date})</h2>
-            <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
-              <span className="text-sm font-medium text-gray-600">Gym Activity</span>
-              <span className="font-bold text-gray-900">{latestRecord.gym_activity}</span>
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <p className="text-sm font-medium text-gray-600">Screen time</p>
+            <div className="mt-2 flex items-end justify-between gap-4">
+              <p className="text-5xl font-semibold">
+                {avg("screen_time").toFixed(1)}
+                <span className="text-xl font-medium text-gray-500"> h avg</span>
+              </p>
+              <Sparkline values={records.map((r) => r.screen_time)} />
             </div>
-            <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
-              <span className="text-sm font-medium text-gray-600">Avg Heart Rate</span>
-              <span className="font-bold text-gray-900">{latestRecord.avg_heart_rate} bpm</span>
-            </div>
+            <p className="mt-3 text-sm text-gray-600">
+              Latest day: <span className="font-semibold text-gray-900">{latest.screen_time} h</span>
+            </p>
           </div>
         </section>
 
-
+        {/* Secondary stats */}
+        <section className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {secondaryStats.map((s) => (
+            <div
+              key={s.label}
+              className="bg-white p-4 rounded-xl shadow-sm border border-gray-100"
+            >
+              <p className="text-sm font-medium text-gray-600">{s.label}</p>
+              <p className="mt-1 text-2xl font-semibold">{s.value}</p>
+              <p className="text-xs text-gray-500">{s.sub}</p>
+            </div>
+          ))}
+        </section>
       </div>
     </main>
   );
