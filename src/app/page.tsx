@@ -79,24 +79,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* AI Recommendations Section */}
-        <section className="bg-blue-900 rounded-2xl p-6 text-white shadow-lg">
-          <h2 className="text-xl font-bold mb-3">AI Quick Insights</h2>
-          <div className="space-y-3">
-            <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-              <p className="text-sm">
-                <strong>Activity:</strong> You spent a total of {totalGymMins} minutes in the gym over the last week. 
-                Your highest output was on weightlifting day!
-              </p>
-            </div>
-            <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-              <p className="text-sm">
-                <strong>Balance:</strong> On average, you are burning roughly {avgCaloriesOut - avgCaloriesIn} more calories 
-                than you consume daily. Great job maintaining a healthy deficit!
-              </p>
-            </div>
-          </div>
-        </section>
 
       </div>
     </main>
