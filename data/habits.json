@@ -1,0 +1,48 @@
+[
+  {
+    "date": "2026-08-20",
+    "sleep": {
+      "hours_slept": 7.5,
+      "deep_sleep_hours": 1.8,
+      "rem_sleep_hours": 2.1
+    },
+    "wearables_data": {
+      "stand_hours": 11,
+      "average_heart_rate_bpm": 68,
+      "resting_heart_rate_bpm": 55,
+      "steps": 12500
+    },
+    "activity": {
+      "gym_time_mins": 60,
+      "workout_type": "Strength Training"
+    },
+    "screen_time": {
+      "total_hours": 4.5,
+      "social_media_hours": 1.5,
+      "productivity_hours": 2.0
+    }
+  },
+  {
+    "date": "2026-08-21",
+    "sleep": {
+      "hours_slept": 6.2,
+      "deep_sleep_hours": 1.2,
+      "rem_sleep_hours": 1.5
+    },
+    "wearables_data": {
+      "stand_hours": 8,
+      "average_heart_rate_bpm": 72,
+      "resting_heart_rate_bpm": 58,
+      "steps": 8000
+    },
+    "activity": {
+      "gym_time_mins": 0,
+      "workout_type": "Rest"
+    },
+    "screen_time": {
+      "total_hours": 6.0,
+      "social_media_hours": 2.5,
+      "productivity_hours": 2.5
+    }
+  }
+]
