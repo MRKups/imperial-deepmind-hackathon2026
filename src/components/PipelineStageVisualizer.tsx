@@ -13,7 +13,7 @@ interface PipelineStageVisualizerProps {
 
 export default function PipelineStageVisualizer({ dataset }: PipelineStageVisualizerProps) {
   const [selectedExampleId, setSelectedExampleId] = useState<string>("example_1");
-  const [activeStage, setActiveStage] = useState<number>(4); // Default to final morning message
+  const [activeStage, setActiveStage] = useState<number>(4);
   const [customConditions, setCustomConditions] = useState<string[]>([
     "Type 2 diabetes",
     "Mild asthma"
@@ -34,127 +34,249 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
   const { stage1_triggers, stage2_passA, stage3_research, stage4_passB } = pipelineResult;
 
   const stages = [
-    {
-      step: 1,
-      title: "1. Trigger Engine",
-      subtitle: "Deterministic JS (No LLM)",
-      badge: "Arithmetic & Scoring",
-      icon: "⚙️"
-    },
-    {
-      step: 2,
-      title: "2. Pass A",
-      subtitle: "Gemma (Local On-Device)",
-      badge: "Hero Pick & PII Sanitizer",
-      icon: "🛡️"
-    },
-    {
-      step: 3,
-      title: "3. Research",
-      subtitle: "Gemini (Cloud Zero PII)",
-      badge: "NHS / WHO Guidelines",
-      icon: "☁️"
-    },
-    {
-      step: 4,
-      title: "4. Pass B",
-      subtitle: "Gemma (Local On-Device)",
-      badge: "3 Lines · <30 Words",
-      icon: "📱"
-    }
+    { step: 1, title: "1. Trigger Engine", subtitle: "Arithmetic" },
+    { step: 2, title: "2. Pass A", subtitle: "Hero & PII Gate" },
+    { step: 3, title: "3. Research", subtitle: "Cloud Guideline" },
+    { step: 4, title: "4. Pass B", subtitle: "Lock Screen (<30w)" }
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Top Banner / Mission Statement from AGENT.md */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-400/30">
-            <span>⚡</span>
-            <span>AGENT.md · Anticipatory Health Intelligence</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            One Anticipatory Action Every Morning at 07:00
-          </h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            Code computes, models phrase. The cloud model never sees who you are. Medical history
-            amplifies behaviour. Exactly one hero insight in under 30 words.
-          </p>
+    <div className="max-w-4xl mx-auto space-y-8">
+      {/* Header & Scenario Switcher */}
+      <div className="space-y-3 border-b border-gray-100 pb-5">
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+          <h1 className="text-2xl font-semibold tracking-tight text-gray-900">
+            Anticipatory Health Agent
+          </h1>
+          <span className="text-xs text-gray-400 font-mono">AGENT.md v1.0</span>
         </div>
+        <p className="text-xs text-gray-500 max-w-xl">
+          Deterministic code computes arithmetic. Gemma phrases. Cloud receives zero PII. Exactly one
+          hero action in under 30 words.
+        </p>
 
-        {/* Demo Scenario Selector (§14 Worked Examples) */}
-        <div className="mt-6 pt-6 border-t border-white/10">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-300 block mb-2">
-            Select Worked Example (§14)
-          </span>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {WORKED_EXAMPLES.map((ex) => (
-              <button
-                key={ex.id}
-                onClick={() => {
-                  setSelectedExampleId(ex.id);
-                  setCustomConditions(ex.conditions);
-                }}
-                className={`p-3.5 rounded-xl text-left transition-all border ${
-                  selectedExampleId === ex.id
-                    ? "bg-white/15 border-blue-400 text-white shadow-md ring-1 ring-blue-400"
-                    : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-blue-300">
-                    {ex.name.split("—")[0]}
-                  </span>
-                  {selectedExampleId === ex.id && (
-                    <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                  )}
-                </div>
-                <p className="text-xs font-semibold text-white truncate">{ex.tagline}</p>
-              </button>
-            ))}
-          </div>
+        {/* Minimal Scenario Switcher */}
+        <div className="flex items-center gap-2 pt-2 overflow-x-auto">
+          {WORKED_EXAMPLES.map((ex) => (
+            <button
+              key={ex.id}
+              onClick={() => {
+                setSelectedExampleId(ex.id);
+                setCustomConditions(ex.conditions);
+              }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+                selectedExampleId === ex.id
+                  ? "bg-gray-900 text-white shadow-xs"
+                  : "bg-gray-100/80 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              {ex.name.split("—")[0]}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* §6 Condition Multiplier Sandbox */}
-      <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-xs">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
-          <div>
-            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
-              <span>🩺</span>
-              <span>§6 Medical Risk Amplification Sandbox</span>
-            </h3>
-            <p className="text-xs text-gray-500">
-              Medical history amplifies behaviour. Five McDonald&apos;s a week is ×1 for a healthy
-              22-year-old and ×3 for a diabetic.
-            </p>
+      {/* Primary Hero Card: 07:00 AM Lock Screen Notification */}
+      <div className="max-w-md mx-auto">
+        <div className="bg-gray-900 text-white p-6 rounded-2xl shadow-sm border border-gray-800 space-y-3">
+          <div className="flex items-center justify-between text-xs text-gray-400 border-b border-gray-800 pb-2.5">
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              Lock Screen · 07:00 AM
+            </span>
+            <span className="font-mono text-[11px] text-gray-400">
+              {stage4_passB.word_count} / 30 words
+            </span>
           </div>
-          <span className="text-xs px-2.5 py-1 bg-amber-50 text-amber-800 rounded-lg font-bold border border-amber-200">
-            Diet Multiplier:{" "}
-            {customConditions.includes("Type 2 diabetes") ? "×3.0 (Type 2 Diabetes)" : "×1.0 (Baseline)"}
-          </span>
+
+          <div className="space-y-1.5 text-sm sm:text-base leading-relaxed text-gray-100">
+            <p>{stage4_passB.line_1}</p>
+            <p className="text-gray-300">{stage4_passB.line_2}</p>
+            <p className="font-semibold text-emerald-400">{stage4_passB.action}</p>
+
+            {stage4_passB.secondaries.map((sec, i) => (
+              <p key={i} className="text-xs text-gray-400 pt-1">
+                {sec}
+              </p>
+            ))}
+          </div>
+
+          {stage4_passB.source_name && (
+            <div className="pt-3 border-t border-gray-800 text-xs text-gray-400 flex items-center justify-between">
+              <span className="truncate">{stage4_passB.source_name}</span>
+              <a
+                href={stage4_passB.source_url || "#"}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-400 hover:underline shrink-0 ml-2"
+              >
+                Source ↗
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Segmented Pipeline Stepper */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+            Pipeline Stages
+          </h2>
+          <span className="text-xs text-gray-400">Click stage to inspect</span>
         </div>
 
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {stages.map((st) => (
+            <button
+              key={st.step}
+              onClick={() => setActiveStage(st.step)}
+              className={`p-3 rounded-xl text-left border text-xs transition-all ${
+                activeStage === st.step
+                  ? "bg-white border-gray-900 shadow-xs font-semibold text-gray-900"
+                  : "bg-white border-gray-100 text-gray-500 hover:border-gray-200"
+              }`}
+            >
+              <span className="block font-medium">{st.title}</span>
+              <span className="text-[11px] text-gray-400">{st.subtitle}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Stage Content Card */}
+        <div className="bg-white p-5 rounded-2xl border border-gray-100/90 shadow-xs text-xs space-y-4">
+          {/* Stage 1: Trigger Engine */}
+          {activeStage === 1 && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-gray-50 pb-2">
+                <span className="font-semibold text-gray-900">
+                  Stage 1: Deterministic Trigger Engine (JavaScript)
+                </span>
+                <span className="text-gray-400 font-mono">
+                  {stage1_triggers.length} triggers evaluated
+                </span>
+              </div>
+              <div className="space-y-2">
+                {stage1_triggers.map((trig, idx) => (
+                  <div
+                    key={trig.id}
+                    className={`p-3 rounded-xl border ${
+                      idx === 0
+                        ? "bg-gray-50/80 border-gray-200"
+                        : "bg-white border-gray-100 text-gray-600"
+                    }`}
+                  >
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="font-medium text-gray-900">{trig.title}</span>
+                      <span className="font-mono font-medium text-gray-700">
+                        Score: {trig.final_score}
+                      </span>
+                    </div>
+                    <p className="text-gray-500 text-[11px]">{trig.summary}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Stage 2: Pass A */}
+          {activeStage === 2 && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-gray-50 pb-2">
+                <span className="font-semibold text-gray-900">
+                  Stage 2: Pass A — Gemma (Local On-Device)
+                </span>
+                <span className="text-emerald-600 font-medium">PII Gate: Passed</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600">
+                <div className="p-3 bg-gray-50 rounded-xl space-y-1">
+                  <span className="text-gray-400 block text-[11px]">Selected Hero Trigger</span>
+                  <span className="font-mono text-gray-900 font-medium">
+                    {stage2_passA.hero_trigger_id}
+                  </span>
+                  <p className="text-gray-500 pt-1 text-[11px]">{stage2_passA.hero_reason}</p>
+                </div>
+                <div className="p-3 bg-gray-50 rounded-xl space-y-1">
+                  <span className="text-gray-400 block text-[11px]">De-Identified Cloud Query</span>
+                  <p className="text-gray-900 italic">
+                    &ldquo;{stage2_passA.research_question || "None (Internal data only)"}&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Stage 3: Research */}
+          {activeStage === 3 && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-gray-50 pb-2">
+                <span className="font-semibold text-gray-900">
+                  Stage 3: Cloud Research — Gemini (Zero Personal Context)
+                </span>
+                <span className="text-gray-400">Authoritative retrieval</span>
+              </div>
+              {stage3_research ? (
+                <div className="p-3 bg-gray-50 rounded-xl space-y-2 text-gray-700">
+                  <p className="font-medium text-gray-900">{stage3_research.answer}</p>
+                  <p className="text-gray-500 text-[11px]">
+                    Lead time: {stage3_research.lead_time_days} days · Source:{" "}
+                    {stage3_research.source_name}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-gray-400 italic">No external research required.</p>
+              )}
+            </div>
+          )}
+
+          {/* Stage 4: Pass B */}
+          {activeStage === 4 && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-gray-50 pb-2">
+                <span className="font-semibold text-gray-900">
+                  Stage 4: Pass B — Gemma Local Synthesis
+                </span>
+                <span className="text-emerald-600 font-medium">
+                  {stage4_passB.word_count} words (≤30 hard cap)
+                </span>
+              </div>
+              <div className="p-3 bg-gray-50 rounded-xl space-y-1.5 text-gray-700 font-mono text-[11px]">
+                <p>Line 1: {stage4_passB.line_1}</p>
+                <p>Line 2: {stage4_passB.line_2}</p>
+                <p>Action: {stage4_passB.action}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Minimal Condition Multiplier Sandbox */}
+      <div className="bg-white p-5 rounded-2xl border border-gray-100/90 shadow-xs space-y-2 text-xs">
+        <div className="flex justify-between items-center">
+          <span className="font-semibold text-gray-900">
+            §6 Medical Risk Multiplier Sandbox
+          </span>
+          <span className="text-gray-400">
+            {customConditions.includes("Type 2 diabetes") ? "×3.0 (T2D)" : "×1.0 (Baseline)"}
+          </span>
+        </div>
+        <div className="flex flex-wrap gap-1.5 pt-1">
           {[
             "Type 2 diabetes",
             "Hypertension",
             "Mild asthma",
             "Cardiovascular disease",
-            "Caffeine dependency",
-            "Anxiety / depression"
+            "Caffeine dependency"
           ].map((cond) => {
             const isChecked = customConditions.includes(cond);
             return (
               <button
                 key={cond}
                 onClick={() => handleToggleCondition(cond)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+                className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all ${
                   isChecked
-                    ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                    : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
+                    ? "bg-gray-900 text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >
                 {isChecked ? "✓ " : "+ "}
@@ -162,355 +284,6 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
               </button>
             );
           })}
-        </div>
-      </div>
-
-      {/* 4-Stage Stepper Navigation */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {stages.map((st) => {
-          const isSelected = activeStage === st.step;
-          return (
-            <button
-              key={st.step}
-              onClick={() => setActiveStage(st.step)}
-              className={`p-4 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
-                isSelected
-                  ? "bg-blue-50/90 border-blue-600 ring-2 ring-blue-600/20 shadow-sm"
-                  : "bg-white border-gray-200 hover:border-gray-300 shadow-xs"
-              }`}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold ${
-                    isSelected ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700"
-                  }`}
-                >
-                  {st.step}
-                </span>
-                <span className="text-lg">{st.icon}</span>
-              </div>
-              <div>
-                <p className="text-xs font-bold text-gray-900">{st.title}</p>
-                <p className="text-[11px] text-gray-500 truncate">{st.subtitle}</p>
-              </div>
-              <div className="mt-3 pt-2 border-t border-gray-100 text-[10px] font-bold text-blue-700">
-                {st.badge}
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* STAGE DETAIL VIEWER */}
-      <div className="bg-white rounded-3xl border border-gray-200 shadow-xs overflow-hidden">
-        {/* STAGE 4: PASS B — 07:00 AM LOCK SCREEN MESSAGE */}
-        {activeStage === 4 && (
-          <div className="p-6 sm:p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-emerald-700 text-white font-bold text-xs">
-                    Stage 4
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Pass B — Gemma Local Synthesis (Lock Screen 07:00)
-                  </h3>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Read on a lock screen in 5 seconds. Three short lines, 30 words total, hard cap.
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold px-3 py-1 bg-emerald-50 text-emerald-800 rounded-full border border-emerald-200">
-                  {stage4_passB.word_count} / 30 Words · Hard Cap Passed
-                </span>
-              </div>
-            </div>
-
-            {/* Lock Screen Simulation Frame */}
-            <div className="max-w-md mx-auto">
-              <div className="bg-slate-950 text-white p-6 rounded-3xl shadow-2xl border border-slate-800 relative">
-                {/* Lockscreen Header */}
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-xs text-slate-400 font-sans">
-                  <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-md bg-blue-600 flex items-center justify-center text-[10px] text-white font-bold">
-                      ⚡
-                    </span>
-                    <span className="font-semibold text-slate-300">AnticipateHealth</span>
-                  </div>
-                  <span>07:00 AM</span>
-                </div>
-
-                {/* Lockscreen 3-Line Message */}
-                <div className="space-y-2.5 text-sm font-sans leading-relaxed text-slate-100">
-                  <p className="font-normal">{stage4_passB.line_1}</p>
-                  <p className="text-slate-300">{stage4_passB.line_2}</p>
-                  <p className="font-bold text-emerald-400">{stage4_passB.action}</p>
-
-                  {/* Secondaries */}
-                  {stage4_passB.secondaries.length > 0 && (
-                    <div className="pt-2 text-xs text-slate-400 space-y-1">
-                      {stage4_passB.secondaries.map((sec, i) => (
-                        <p key={i}>{sec}</p>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Source Citation */}
-                  {stage4_passB.source_name && (
-                    <div className="pt-3 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
-                      <span className="truncate">{stage4_passB.source_name}</span>
-                      <a
-                        href={stage4_passB.source_url || "#"}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-blue-400 hover:underline shrink-0 ml-2"
-                      >
-                        Source ↗
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="mt-3 text-center text-xs text-gray-400">
-                <span>Lock screen presentation — tested for 5-second glanceability.</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* STAGE 1: TRIGGER ENGINE */}
-        {activeStage === 1 && (
-          <div className="p-6 sm:p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-gray-900 text-white font-bold text-xs">
-                    Stage 1
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Deterministic Trigger Engine (JavaScript)
-                  </h3>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Formula:{" "}
-                  <code className="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-gray-800">
-                    score = urgency × actionability × confidence × amplifier
-                  </code>
-                </p>
-              </div>
-              <span className="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-800 rounded-full border border-emerald-200">
-                {stage1_triggers.length} Candidates Evaluated
-              </span>
-            </div>
-
-            <div className="space-y-3">
-              {stage1_triggers.map((trig, idx) => (
-                <div
-                  key={trig.id}
-                  className={`p-4 rounded-2xl border transition-all ${
-                    idx === 0
-                      ? "bg-blue-50/50 border-blue-300 ring-1 ring-blue-300 shadow-xs"
-                      : "bg-gray-50 border-gray-200"
-                  }`}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-1.5">
-                    <div className="flex items-center gap-2">
-                      {idx === 0 && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-600 text-white">
-                          HERO CANDIDATE
-                        </span>
-                      )}
-                      <span className="font-bold text-sm text-gray-900">{trig.title}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs font-mono">
-                      <span className="font-bold px-2 py-0.5 bg-gray-200 text-gray-900 rounded">
-                        Score: {trig.final_score}
-                      </span>
-                      <span
-                        className={`px-2 py-0.5 rounded font-semibold uppercase ${
-                          trig.severity === "urgent"
-                            ? "bg-rose-100 text-rose-800"
-                            : trig.severity === "warn"
-                            ? "bg-amber-100 text-amber-800"
-                            : "bg-blue-100 text-blue-800"
-                        }`}
-                      >
-                        {trig.severity}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-gray-700 mb-2">{trig.summary}</p>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-gray-200 text-[11px] font-mono">
-                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
-                      <span className="text-gray-500 block text-[10px]">Urgency</span>
-                      <span className="font-bold text-gray-900">{trig.urgency}</span>
-                    </div>
-                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
-                      <span className="text-gray-500 block text-[10px]">Actionability</span>
-                      <span className="font-bold text-gray-900">{trig.actionability}</span>
-                    </div>
-                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
-                      <span className="text-gray-500 block text-[10px]">Amplifier (§6)</span>
-                      <span className="font-bold text-indigo-700">×{trig.amplifier}</span>
-                    </div>
-                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
-                      <span className="text-gray-500 block text-[10px]">Confidence</span>
-                      <span className="font-bold text-gray-900">{trig.confidence}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* STAGE 2: PASS A */}
-        {activeStage === 2 && (
-          <div className="p-6 sm:p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-indigo-900 text-white font-bold text-xs">
-                    Stage 2
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Pass A — Gemma (Local On-Device)
-                  </h3>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Sees identity locally. Picks 1 hero trigger and constructs zero-PII cloud question.
-                </p>
-              </div>
-              <span className="text-xs font-semibold px-3 py-1 bg-blue-50 text-blue-800 rounded-full border border-blue-200">
-                PII Privacy Gate: Active
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200 space-y-3 text-xs">
-                <h4 className="font-bold uppercase tracking-wider text-gray-600">
-                  Local Decision Output
-                </h4>
-                <div>
-                  <span className="text-gray-500 font-medium">Selected Hero:</span>
-                  <p className="font-bold text-gray-900 mt-0.5 font-mono">
-                    {stage2_passA.hero_trigger_id}
-                  </p>
-                </div>
-                <div>
-                  <span className="text-gray-500 font-medium">Hero Selection Reason:</span>
-                  <p className="text-gray-800 mt-0.5">{stage2_passA.hero_reason}</p>
-                </div>
-                <div>
-                  <span className="text-gray-500 font-medium">De-Identified Question:</span>
-                  <p className="italic text-blue-900 mt-0.5 font-medium">
-                    &ldquo;{stage2_passA.research_question || "None (Internal data only)"}&rdquo;
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-2xl border border-emerald-200 shadow-xs space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-                  <span>🛡️</span>
-                  <span>Zero-PII Verification Gate</span>
-                </h4>
-                <div className="space-y-2 text-xs">
-                  {stage2_passA.sanitization_log.map((log, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-2 p-2 bg-emerald-50/60 rounded-xl border border-emerald-100"
-                    >
-                      <span className="text-emerald-600 font-bold">✓</span>
-                      <div>
-                        <p className="font-semibold text-gray-900">{log.rule}</p>
-                        <p className="text-gray-500 text-[11px]">{log.detail}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* STAGE 3: RESEARCH */}
-        {activeStage === 3 && (
-          <div className="p-6 sm:p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-sky-600 text-white font-bold text-xs">
-                    Stage 3
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Cloud Research — Gemini (Zero Personal Data)
-                  </h3>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Answers de-identified question exclusively from NHS, WHO, and TravelHealthPro sources.
-                </p>
-              </div>
-            </div>
-
-            {stage3_research ? (
-              <div className="p-5 bg-sky-50/60 rounded-2xl border border-sky-200 space-y-3">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-sky-900 uppercase">Authoritative Guidance</span>
-                  <span className="font-semibold px-2 py-0.5 bg-sky-100 text-sky-800 rounded">
-                    Lead Time: {stage3_research.lead_time_days} days
-                  </span>
-                </div>
-                <p className="text-sm text-gray-900 font-medium">{stage3_research.answer}</p>
-                <div className="pt-2 border-t border-sky-200 text-xs text-gray-600 flex items-center justify-between">
-                  <span>Source: {stage3_research.source_name}</span>
-                  <a
-                    href={stage3_research.source_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-blue-600 hover:underline font-semibold"
-                  >
-                    View Source ↗
-                  </a>
-                </div>
-              </div>
-            ) : (
-              <div className="p-6 text-center bg-gray-50 rounded-2xl border border-gray-200 text-xs text-gray-500">
-                No external research required for this trigger.
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-
-      {/* §15 Failure Modes and Fallbacks Accordion */}
-      <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-xs">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-3 flex items-center gap-2">
-          <span>⚙️</span>
-          <span>§15 Failure Modes & Architectural Fallbacks</span>
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
-          <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
-            <span className="font-bold text-gray-900 block mb-0.5">No Trigger Clears Score</span>
-            <p className="text-gray-500">
-              Outputs 1 positive finding from data. Never fabricates a fake concern.
-            </p>
-          </div>
-          <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
-            <span className="font-bold text-gray-900 block mb-0.5">Gemini Cloud Offline</span>
-            <p className="text-gray-500">
-              Proceeds with internal-data-only action. Omits source URL line.
-            </p>
-          </div>
-          <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
-            <span className="font-bold text-gray-900 block mb-0.5">PII Gate Fails Twice</span>
-            <p className="text-gray-500">
-              Fails closed: cancels cloud query. Personal data never leaves device.
-            </p>
-          </div>
         </div>
       </div>
     </div>
