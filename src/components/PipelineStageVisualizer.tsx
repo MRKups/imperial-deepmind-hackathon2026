@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { HealthDataset } from "../lib/types";
+import React, { useState, useMemo, useEffect } from "react";
+import { HealthDataset, ResearchOutput } from "../lib/types";
 import {
   executeAgentPipeline,
   WORKED_EXAMPLES
@@ -32,6 +32,45 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
   }, [dataset, customConditions]);
 
   const { stage1_triggers, stage2_passA, stage3_research, stage4_passB } = pipelineResult;
+
+  // Step 3 live mode: send the sanitized zero-PII question to the real
+  // Gemini API via our server route; fall back to the simulated response.
+  const [liveResearch, setLiveResearch] = useState<ResearchOutput | null>(null);
+  const [researchMode, setResearchMode] = useState<"simulated" | "loading" | "live">(
+    "simulated"
+  );
+
+  useEffect(() => {
+    const question = stage2_passA.research_question;
+    if (!question) {
+      setLiveResearch(null);
+      setResearchMode("simulated");
+      return;
+    }
+    let cancelled = false;
+    setResearchMode("loading");
+    fetch("/api/research", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question }),
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data: ResearchOutput) => {
+        if (cancelled) return;
+        setLiveResearch(data);
+        setResearchMode("live");
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setLiveResearch(null);
+        setResearchMode("simulated");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [stage2_passA.research_question]);
+
+  const displayResearch = liveResearch ?? stage3_research;
 
   const plainEnglishStages = [
     {
@@ -251,17 +290,37 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
                 <span className="font-bold text-gray-950 text-base sm:text-lg">
                   Step 3: Check Health Guidelines & Deadlines
                 </span>
-                <span className="text-sm text-gray-500">Official turnaround times</span>
+                <span
+                  className={
+                    researchMode === "live"
+                      ? "text-sm text-emerald-700 font-bold"
+                      : "text-sm text-gray-500"
+                  }
+                >
+                  {researchMode === "live"
+                    ? "● Live Gemini answer"
+                    : researchMode === "loading"
+                      ? "Asking Gemini…"
+                      : "Official turnaround times"}
+                </span>
               </div>
               <p className="text-gray-700 leading-relaxed">
                 The system checks official rules for deadlines (for example: NHS repeat prescriptions
                 usually take 5 working days, and travel vaccines take 10–14 days to take effect).
               </p>
-              {stage3_research ? (
+              {displayResearch ? (
                 <div className="p-4 bg-gray-50 rounded-2xl space-y-2 border border-gray-200 text-sm sm:text-base">
-                  <p className="font-semibold text-gray-950">{stage3_research.answer}</p>
+                  <p className="font-semibold text-gray-950">{displayResearch.answer}</p>
+                  {displayResearch.key_facts.length > 0 && (
+                    <ul className="space-y-1 text-sm text-gray-600 list-disc list-inside">
+                      {displayResearch.key_facts.map((fact) => (
+                        <li key={fact}>{fact}</li>
+                      ))}
+                    </ul>
+                  )}
                   <p className="text-gray-600 text-sm">
-                    Required lead time: <strong>{stage3_research.lead_time_days} days before departure</strong>
+                    Required lead time: <strong>{displayResearch.lead_time_days} days</strong> ·{" "}
+                    {displayResearch.source_name}
                   </p>
                 </div>
               ) : (
