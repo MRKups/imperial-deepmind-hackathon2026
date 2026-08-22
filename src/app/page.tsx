@@ -23,7 +23,7 @@ export default function Home() {
         
         <header className="flex flex-col gap-2">
           <h1 className="text-4xl font-bold tracking-tight text-blue-900">
-            {healthData.profile.name}'s Health Dashboard
+            {healthData.profile.name}&apos;s Health Dashboard
           </h1>
           <p className="text-lg text-gray-600">Initial stats & lifestyle overview based on recent data.</p>
         </header>
