@@ -105,7 +105,6 @@ export interface DailyRecord {
   lifestyle?: LifestyleData;
   fitness?: FitnessData;
   wearables?: WearablesData;
-  // Legacy / fallback fields from basic health-data.json
   stand_hours?: number;
   avg_heart_rate?: number;
   sleep_hours?: number;
@@ -141,9 +140,9 @@ export interface CandidateTrigger {
   trigger_class: TriggerClass;
   title: string;
   summary: string;
-  noticed_fact: string;
-  why_now_fact: string;
-  action_recommendation: string;
+  line_1: string;
+  line_2: string;
+  action_line: string;
   raw_score: number;
   urgency: number;
   actionability: number;
@@ -182,8 +181,8 @@ export interface ResearchOutput {
 }
 
 export interface PassBOutput {
-  noticed: string;
-  why_now: string;
+  line_1: string;
+  line_2: string;
   action: string | null;
   source_name: string | null;
   source_url: string | null;

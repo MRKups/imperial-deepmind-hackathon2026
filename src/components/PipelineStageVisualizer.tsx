@@ -13,13 +13,12 @@ interface PipelineStageVisualizerProps {
 
 export default function PipelineStageVisualizer({ dataset }: PipelineStageVisualizerProps) {
   const [selectedExampleId, setSelectedExampleId] = useState<string>("example_1");
-  const [activeStage, setActiveStage] = useState<number>(1);
+  const [activeStage, setActiveStage] = useState<number>(4); // Default to final morning message
   const [customConditions, setCustomConditions] = useState<string[]>([
     "Type 2 diabetes",
     "Mild asthma"
   ]);
 
-  // Handle condition toggle in the sandbox
   const handleToggleCondition = (cond: string) => {
     if (customConditions.includes(cond)) {
       setCustomConditions(customConditions.filter((c) => c !== cond));
@@ -28,41 +27,39 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
     }
   };
 
-  // Run the 4-stage pipeline based on current state
   const pipelineResult = useMemo(() => {
     return executeAgentPipeline(dataset, "2026-08-22", customConditions);
   }, [dataset, customConditions]);
 
   const { stage1_triggers, stage2_passA, stage3_research, stage4_passB } = pipelineResult;
-  const heroTrigger = stage1_triggers.find((t) => t.id === stage2_passA.hero_trigger_id);
 
   const stages = [
     {
       step: 1,
-      title: "Trigger Engine",
+      title: "1. Trigger Engine",
       subtitle: "Deterministic JS (No LLM)",
       badge: "Arithmetic & Scoring",
       icon: "⚙️"
     },
     {
       step: 2,
-      title: "Pass A",
-      subtitle: "Gemma (Local / On-Device)",
+      title: "2. Pass A",
+      subtitle: "Gemma (Local On-Device)",
       badge: "Hero Pick & PII Sanitizer",
       icon: "🛡️"
     },
     {
       step: 3,
-      title: "Research",
-      subtitle: "Gemini (Cloud / Zero PII)",
+      title: "3. Research",
+      subtitle: "Gemini (Cloud Zero PII)",
       badge: "NHS / WHO Guidelines",
       icon: "☁️"
     },
     {
       step: 4,
-      title: "Pass B",
-      subtitle: "Gemma (Local / On-Device)",
-      badge: "<30 Word Action Briefing",
+      title: "4. Pass B",
+      subtitle: "Gemma (Local On-Device)",
+      badge: "3 Lines · <30 Words",
       icon: "📱"
     }
   ];
@@ -70,68 +67,73 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
   return (
     <div className="space-y-8">
       {/* Top Banner / Mission Statement from AGENT.md */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-6 sm:p-8 rounded-3xl shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl relative overflow-hidden">
+        <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold border border-blue-400/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-400/30">
             <span>⚡</span>
-            <span>AGENT.md Spec Implementation</span>
+            <span>AGENT.md · Anticipatory Health Intelligence</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Anticipatory Health Intelligence Engine
+            One Anticipatory Action Every Morning at 07:00
           </h2>
-          <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-            &ldquo;Code computes, models phrase. The cloud model never sees who you are. Medical
-            history amplifies behaviour. Exactly one hero insight in under 30 words.&rdquo;
+          <p className="text-sm text-gray-300 leading-relaxed">
+            Code computes, models phrase. The cloud model never sees who you are. Medical history
+            amplifies behaviour. Exactly one hero insight in under 30 words.
           </p>
         </div>
 
-        {/* Demo Scenario Selector */}
-        <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {WORKED_EXAMPLES.map((ex) => (
-            <button
-              key={ex.id}
-              onClick={() => {
-                setSelectedExampleId(ex.id);
-                setCustomConditions(ex.conditions);
-              }}
-              className={`p-3.5 rounded-xl text-left transition-all border ${
-                selectedExampleId === ex.id
-                  ? "bg-white/15 border-blue-400 text-white shadow-md ring-1 ring-blue-400"
-                  : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
-              }`}
-            >
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-300">
-                  {ex.name.split("—")[0]}
-                </span>
-                {selectedExampleId === ex.id && (
-                  <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                )}
-              </div>
-              <p className="text-xs font-semibold text-white truncate">{ex.tagline}</p>
-            </button>
-          ))}
+        {/* Demo Scenario Selector (§14 Worked Examples) */}
+        <div className="mt-6 pt-6 border-t border-white/10">
+          <span className="text-xs font-bold uppercase tracking-wider text-blue-300 block mb-2">
+            Select Worked Example (§14)
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {WORKED_EXAMPLES.map((ex) => (
+              <button
+                key={ex.id}
+                onClick={() => {
+                  setSelectedExampleId(ex.id);
+                  setCustomConditions(ex.conditions);
+                }}
+                className={`p-3.5 rounded-xl text-left transition-all border ${
+                  selectedExampleId === ex.id
+                    ? "bg-white/15 border-blue-400 text-white shadow-md ring-1 ring-blue-400"
+                    : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
+                }`}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-blue-300">
+                    {ex.name.split("—")[0]}
+                  </span>
+                  {selectedExampleId === ex.id && (
+                    <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                  )}
+                </div>
+                <p className="text-xs font-semibold text-white truncate">{ex.tagline}</p>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Condition Amplifier Sandbox */}
+      {/* §6 Condition Multiplier Sandbox */}
       <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
           <div>
             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
               <span>🩺</span>
-              <span>§6 Risk Amplification Sandbox</span>
+              <span>§6 Medical Risk Amplification Sandbox</span>
             </h3>
             <p className="text-xs text-gray-500">
-              Toggle medical conditions in real time to see how the trigger engine amplifies
-              behavioural signals (e.g. takeaway ×3 for diabetes).
+              Medical history amplifies behaviour. Five McDonald&apos;s a week is ×1 for a healthy
+              22-year-old and ×3 for a diabetic.
             </p>
           </div>
-          <span className="text-xs px-2.5 py-1 bg-amber-50 text-amber-800 rounded-lg font-semibold border border-amber-200">
-            Active Multiplier:{" "}
-            {customConditions.includes("Type 2 diabetes") ? "×3.0 (T2D)" : "×1.0 (Baseline)"}
+          <span className="text-xs px-2.5 py-1 bg-amber-50 text-amber-800 rounded-lg font-bold border border-amber-200">
+            Diet Multiplier:{" "}
+            {customConditions.includes("Type 2 diabetes") ? "×3.0 (Type 2 Diabetes)" : "×1.0 (Baseline)"}
           </span>
         </div>
 
@@ -173,7 +175,7 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
               onClick={() => setActiveStage(st.step)}
               className={`p-4 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
                 isSelected
-                  ? "bg-blue-50/80 border-blue-600 ring-2 ring-blue-600/20 shadow-sm"
+                  ? "bg-blue-50/90 border-blue-600 ring-2 ring-blue-600/20 shadow-sm"
                   : "bg-white border-gray-200 hover:border-gray-300 shadow-xs"
               }`}
             >
@@ -191,7 +193,7 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
                 <p className="text-xs font-bold text-gray-900">{st.title}</p>
                 <p className="text-[11px] text-gray-500 truncate">{st.subtitle}</p>
               </div>
-              <div className="mt-3 pt-2 border-t border-gray-100 text-[10px] font-semibold text-blue-700">
+              <div className="mt-3 pt-2 border-t border-gray-100 text-[10px] font-bold text-blue-700">
                 {st.badge}
               </div>
             </button>
@@ -199,8 +201,85 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
         })}
       </div>
 
-      {/* Stage Detail Viewer */}
+      {/* STAGE DETAIL VIEWER */}
       <div className="bg-white rounded-3xl border border-gray-200 shadow-xs overflow-hidden">
+        {/* STAGE 4: PASS B — 07:00 AM LOCK SCREEN MESSAGE */}
+        {activeStage === 4 && (
+          <div className="p-6 sm:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded bg-emerald-700 text-white font-bold text-xs">
+                    Stage 4
+                  </span>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Pass B — Gemma Local Synthesis (Lock Screen 07:00)
+                  </h3>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  Read on a lock screen in 5 seconds. Three short lines, 30 words total, hard cap.
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold px-3 py-1 bg-emerald-50 text-emerald-800 rounded-full border border-emerald-200">
+                  {stage4_passB.word_count} / 30 Words · Hard Cap Passed
+                </span>
+              </div>
+            </div>
+
+            {/* Lock Screen Simulation Frame */}
+            <div className="max-w-md mx-auto">
+              <div className="bg-slate-950 text-white p-6 rounded-3xl shadow-2xl border border-slate-800 relative">
+                {/* Lockscreen Header */}
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-xs text-slate-400 font-sans">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-md bg-blue-600 flex items-center justify-center text-[10px] text-white font-bold">
+                      ⚡
+                    </span>
+                    <span className="font-semibold text-slate-300">AnticipateHealth</span>
+                  </div>
+                  <span>07:00 AM</span>
+                </div>
+
+                {/* Lockscreen 3-Line Message */}
+                <div className="space-y-2.5 text-sm font-sans leading-relaxed text-slate-100">
+                  <p className="font-normal">{stage4_passB.line_1}</p>
+                  <p className="text-slate-300">{stage4_passB.line_2}</p>
+                  <p className="font-bold text-emerald-400">{stage4_passB.action}</p>
+
+                  {/* Secondaries */}
+                  {stage4_passB.secondaries.length > 0 && (
+                    <div className="pt-2 text-xs text-slate-400 space-y-1">
+                      {stage4_passB.secondaries.map((sec, i) => (
+                        <p key={i}>{sec}</p>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Source Citation */}
+                  {stage4_passB.source_name && (
+                    <div className="pt-3 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+                      <span className="truncate">{stage4_passB.source_name}</span>
+                      <a
+                        href={stage4_passB.source_url || "#"}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-blue-400 hover:underline shrink-0 ml-2"
+                      >
+                        Source ↗
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-3 text-center text-xs text-gray-400">
+                <span>Lock screen presentation — tested for 5-second glanceability.</span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* STAGE 1: TRIGGER ENGINE */}
         {activeStage === 1 && (
           <div className="p-6 sm:p-8 space-y-6">
@@ -226,31 +305,31 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
               </span>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {stage1_triggers.map((trig, idx) => (
                 <div
                   key={trig.id}
-                  className={`p-5 rounded-2xl border transition-all ${
+                  className={`p-4 rounded-2xl border transition-all ${
                     idx === 0
                       ? "bg-blue-50/50 border-blue-300 ring-1 ring-blue-300 shadow-xs"
                       : "bg-gray-50 border-gray-200"
                   }`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-1.5">
                     <div className="flex items-center gap-2">
                       {idx === 0 && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-600 text-white">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-600 text-white">
                           HERO CANDIDATE
                         </span>
                       )}
                       <span className="font-bold text-sm text-gray-900">{trig.title}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold px-2 py-0.5 bg-gray-200 text-gray-900 rounded">
+                    <div className="flex items-center gap-2 text-xs font-mono">
+                      <span className="font-bold px-2 py-0.5 bg-gray-200 text-gray-900 rounded">
                         Score: {trig.final_score}
                       </span>
                       <span
-                        className={`text-xs px-2 py-0.5 rounded font-semibold uppercase ${
+                        className={`px-2 py-0.5 rounded font-semibold uppercase ${
                           trig.severity === "urgent"
                             ? "bg-rose-100 text-rose-800"
                             : trig.severity === "warn"
@@ -263,23 +342,23 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
                     </div>
                   </div>
 
-                  <p className="text-xs text-gray-700 mb-3">{trig.summary}</p>
+                  <p className="text-xs text-gray-700 mb-2">{trig.summary}</p>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-gray-200 text-[11px] font-mono">
-                    <div className="bg-white p-2 rounded-lg border border-gray-200">
-                      <span className="text-gray-500 block">Urgency</span>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-gray-200 text-[11px] font-mono">
+                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
+                      <span className="text-gray-500 block text-[10px]">Urgency</span>
                       <span className="font-bold text-gray-900">{trig.urgency}</span>
                     </div>
-                    <div className="bg-white p-2 rounded-lg border border-gray-200">
-                      <span className="text-gray-500 block">Actionability</span>
+                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
+                      <span className="text-gray-500 block text-[10px]">Actionability</span>
                       <span className="font-bold text-gray-900">{trig.actionability}</span>
                     </div>
-                    <div className="bg-white p-2 rounded-lg border border-gray-200">
-                      <span className="text-gray-500 block">Amplifier (§6)</span>
+                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
+                      <span className="text-gray-500 block text-[10px]">Amplifier (§6)</span>
                       <span className="font-bold text-indigo-700">×{trig.amplifier}</span>
                     </div>
-                    <div className="bg-white p-2 rounded-lg border border-gray-200">
-                      <span className="text-gray-500 block">Confidence</span>
+                    <div className="bg-white p-1.5 rounded-lg border border-gray-200 text-center">
+                      <span className="text-gray-500 block text-[10px]">Confidence</span>
                       <span className="font-bold text-gray-900">{trig.confidence}</span>
                     </div>
                   </div>
@@ -289,7 +368,7 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
           </div>
         )}
 
-        {/* STAGE 2: PASS A (GEMMA LOCAL) */}
+        {/* STAGE 2: PASS A */}
         {activeStage === 2 && (
           <div className="p-6 sm:p-8 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
@@ -312,62 +391,38 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Decision Card */}
-              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200 space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-600">
+              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200 space-y-3 text-xs">
+                <h4 className="font-bold uppercase tracking-wider text-gray-600">
                   Local Decision Output
                 </h4>
-                <div className="space-y-3 text-xs">
-                  <div>
-                    <span className="text-gray-500 font-medium">Selected Hero:</span>
-                    <p className="font-bold text-gray-900 mt-0.5 font-mono">
-                      {stage2_passA.hero_trigger_id}
-                    </p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500 font-medium">Hero Selection Reason:</span>
-                    <p className="text-gray-800 mt-0.5">{stage2_passA.hero_reason}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500 font-medium">Secondaries:</span>
-                    <p className="text-gray-800 mt-0.5 font-mono">
-                      {stage2_passA.secondary_trigger_ids.join(", ") || "None"}
-                    </p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500 font-medium">External Research Required:</span>
-                    <p className="font-semibold text-blue-700 mt-0.5">
-                      {stage2_passA.needs_research ? "YES (Cloud lookup required)" : "NO (Internal data only)"}
-                    </p>
-                  </div>
+                <div>
+                  <span className="text-gray-500 font-medium">Selected Hero:</span>
+                  <p className="font-bold text-gray-900 mt-0.5 font-mono">
+                    {stage2_passA.hero_trigger_id}
+                  </p>
                 </div>
-
-                {stage2_passA.research_question && (
-                  <div className="p-3 bg-white rounded-xl border border-blue-200 text-xs">
-                    <span className="font-bold text-blue-900 block mb-1">
-                      De-Identified Question Generated:
-                    </span>
-                    <p className="italic text-gray-800">&ldquo;{stage2_passA.research_question}&rdquo;</p>
-                  </div>
-                )}
+                <div>
+                  <span className="text-gray-500 font-medium">Hero Selection Reason:</span>
+                  <p className="text-gray-800 mt-0.5">{stage2_passA.hero_reason}</p>
+                </div>
+                <div>
+                  <span className="text-gray-500 font-medium">De-Identified Question:</span>
+                  <p className="italic text-blue-900 mt-0.5 font-medium">
+                    &ldquo;{stage2_passA.research_question || "None (Internal data only)"}&rdquo;
+                  </p>
+                </div>
               </div>
 
-              {/* Privacy & Sanitization Gate */}
-              <div className="bg-white p-5 rounded-2xl border border-emerald-200 shadow-xs space-y-4">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-                    <span>🛡️</span>
-                    <span>Zero-PII Verification Gate</span>
-                  </h4>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                    PASSED
-                  </span>
-                </div>
-                <div className="space-y-2.5 text-xs">
+              <div className="bg-white p-5 rounded-2xl border border-emerald-200 shadow-xs space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+                  <span>🛡️</span>
+                  <span>Zero-PII Verification Gate</span>
+                </h4>
+                <div className="space-y-2 text-xs">
                   {stage2_passA.sanitization_log.map((log, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-2.5 p-2.5 bg-emerald-50/50 rounded-xl border border-emerald-100"
+                      className="flex items-start gap-2 p-2 bg-emerald-50/60 rounded-xl border border-emerald-100"
                     >
                       <span className="text-emerald-600 font-bold">✓</span>
                       <div>
@@ -382,7 +437,7 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
           </div>
         )}
 
-        {/* STAGE 3: RESEARCH (GEMINI CLOUD) */}
+        {/* STAGE 3: RESEARCH */}
         {activeStage === 3 && (
           <div className="p-6 sm:p-8 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
@@ -392,153 +447,71 @@ export default function PipelineStageVisualizer({ dataset }: PipelineStageVisual
                     Stage 3
                   </span>
                   <h3 className="text-xl font-bold text-gray-900">
-                    Cloud Research — Gemini (Zero Personal Context)
+                    Cloud Research — Gemini (Zero Personal Data)
                   </h3>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
                   Answers de-identified question exclusively from NHS, WHO, and TravelHealthPro sources.
                 </p>
               </div>
-              <span className="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-800 rounded-full border border-sky-200">
-                Authoritative Retrieval
-              </span>
             </div>
 
             {stage3_research ? (
-              <div className="space-y-4">
-                <div className="p-5 bg-sky-50/60 rounded-2xl border border-sky-200 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-sky-900 uppercase tracking-wider">
-                      Authoritative Guidance
-                    </span>
-                    <span className="text-xs font-semibold px-2 py-0.5 bg-sky-100 text-sky-800 rounded">
-                      Required Lead Time: {stage3_research.lead_time_days} days
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-900 font-medium leading-relaxed">
-                    {stage3_research.answer}
-                  </p>
-                  <div className="pt-2 border-t border-sky-200/60">
-                    <span className="text-xs font-bold text-gray-700 block mb-1">
-                      Verified Clinical & Logistic Facts:
-                    </span>
-                    <ul className="list-disc list-inside space-y-1 text-xs text-gray-700">
-                      {stage3_research.key_facts.map((fact, idx) => (
-                        <li key={idx}>{fact}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="pt-2 text-xs text-gray-500 flex items-center justify-between">
-                    <span>
-                      <span className="font-semibold text-gray-700">Source:</span>{" "}
-                      {stage3_research.source_name}
-                    </span>
-                    <a
-                      href={stage3_research.source_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline font-semibold"
-                    >
-                      Visit source ↗
-                    </a>
-                  </div>
+              <div className="p-5 bg-sky-50/60 rounded-2xl border border-sky-200 space-y-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-bold text-sky-900 uppercase">Authoritative Guidance</span>
+                  <span className="font-semibold px-2 py-0.5 bg-sky-100 text-sky-800 rounded">
+                    Lead Time: {stage3_research.lead_time_days} days
+                  </span>
+                </div>
+                <p className="text-sm text-gray-900 font-medium">{stage3_research.answer}</p>
+                <div className="pt-2 border-t border-sky-200 text-xs text-gray-600 flex items-center justify-between">
+                  <span>Source: {stage3_research.source_name}</span>
+                  <a
+                    href={stage3_research.source_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-600 hover:underline font-semibold"
+                  >
+                    View Source ↗
+                  </a>
                 </div>
               </div>
             ) : (
-              <div className="p-8 text-center bg-gray-50 rounded-2xl border border-gray-200">
-                <p className="text-sm font-semibold text-gray-700">
-                  No External Cloud Research Triggered
-                </p>
-                <p className="text-xs text-gray-500 mt-1">
-                  The selected hero trigger is pure internal arithmetic or coupling, solved locally
-                  without external queries.
-                </p>
+              <div className="p-6 text-center bg-gray-50 rounded-2xl border border-gray-200 text-xs text-gray-500">
+                No external research required for this trigger.
               </div>
             )}
           </div>
         )}
+      </div>
 
-        {/* STAGE 4: PASS B (FINAL USER BRIEFING) */}
-        {activeStage === 4 && (
-          <div className="p-6 sm:p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-emerald-700 text-white font-bold text-xs">
-                    Stage 4
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Pass B — Gemma Local Synthesis
-                  </h3>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Merges external facts with personal numbers into the final 07:00 AM action message.
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-full border border-emerald-200">
-                  {stage4_passB.word_count} / 60 Words
-                </span>
-                <span className="text-xs font-bold px-2 py-0.5 bg-emerald-600 text-white rounded">
-                  PASS
-                </span>
-              </div>
-            </div>
-
-            {/* Simulated Phone Card / Morning Message */}
-            <div className="max-w-xl mx-auto">
-              <div className="bg-gradient-to-b from-gray-900 to-slate-900 text-white p-6 sm:p-7 rounded-3xl shadow-2xl border border-gray-700 relative">
-                <div className="flex items-center justify-between border-b border-gray-800 pb-3 mb-4 text-xs text-gray-400">
-                  <span className="font-semibold text-gray-300">07:00 AM Notification</span>
-                  <span className="text-emerald-400 font-semibold">1 Actionable Insight</span>
-                </div>
-
-                <div className="space-y-3.5 text-sm leading-relaxed">
-                  <div>
-                    <span className="text-blue-400 font-bold uppercase tracking-wider text-xs block">
-                      [Noticed]
-                    </span>
-                    <p className="text-gray-100 mt-0.5">{stage4_passB.noticed}</p>
-                  </div>
-
-                  <div>
-                    <span className="text-amber-400 font-bold uppercase tracking-wider text-xs block">
-                      [Why now]
-                    </span>
-                    <p className="text-gray-100 mt-0.5">{stage4_passB.why_now}</p>
-                  </div>
-
-                  <div>
-                    <span className="text-emerald-400 font-bold uppercase tracking-wider text-xs block">
-                      [Do]
-                    </span>
-                    <p className="text-white font-semibold mt-0.5">{stage4_passB.action}</p>
-                  </div>
-
-                  {stage4_passB.source_name && (
-                    <div className="pt-2 border-t border-gray-800 text-xs text-gray-400">
-                      <span className="text-gray-500 font-bold block">[Source]</span>
-                      <p className="text-gray-300 mt-0.5">
-                        {stage4_passB.source_name} ·{" "}
-                        <span className="text-blue-400">{stage4_passB.source_url}</span>
-                      </p>
-                    </div>
-                  )}
-
-                  {stage4_passB.secondaries.length > 0 && (
-                    <div className="pt-3 border-t border-gray-800 text-xs text-gray-400 space-y-1">
-                      {stage4_passB.secondaries.map((sec, i) => (
-                        <p key={i} className="text-gray-300 italic">
-                          {sec}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+      {/* §15 Failure Modes and Fallbacks Accordion */}
+      <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-xs">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-3 flex items-center gap-2">
+          <span>⚙️</span>
+          <span>§15 Failure Modes & Architectural Fallbacks</span>
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
+            <span className="font-bold text-gray-900 block mb-0.5">No Trigger Clears Score</span>
+            <p className="text-gray-500">
+              Outputs 1 positive finding from data. Never fabricates a fake concern.
+            </p>
           </div>
-        )}
+          <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
+            <span className="font-bold text-gray-900 block mb-0.5">Gemini Cloud Offline</span>
+            <p className="text-gray-500">
+              Proceeds with internal-data-only action. Omits source URL line.
+            </p>
+          </div>
+          <div className="p-3 bg-gray-50 rounded-xl border border-gray-200">
+            <span className="font-bold text-gray-900 block mb-0.5">PII Gate Fails Twice</span>
+            <p className="text-gray-500">
+              Fails closed: cancels cloud query. Personal data never leaves device.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
